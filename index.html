@@ -1507,8 +1507,9 @@ textarea {
           <span id="srsWordsCount">0</span>
         </button>
 
-        <button type="button" class="stat-pill settings-pill" id="btnOpenSettings" title="Cài đặt Gemini API Key miễn phí">
-          <span>⚙️ Cài đặt AI</span>
+        <button type="button" class="stat-pill settings-pill" id="btnOpenSettings" title="Cấu hình Gemini 4 Neon (High) & API Key">
+          <span>⚙️ AI:</span>
+          <span id="activeModelShortBadge">Gemini 4 Neon (High)</span>
         </button>
       </div>
     </div>
@@ -1643,12 +1644,30 @@ textarea {
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="geminiModelSelect">🤖 Phiên bản mô hình Gemini:</label>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px;">
+          <label class="form-label" for="geminiModelSelect" style="margin-bottom:0;">🤖 Phiên bản mô hình Gemini trên tài khoản:</label>
+          <button type="button" class="btn-kid btn-outline" id="btnSyncAccountModels" style="min-height:36px;padding:4px 12px;font-size:0.85rem;">
+            🔄 Quét Model từ Tài khoản của tôi
+          </button>
+        </div>
         <select id="geminiModelSelect" class="form-select">
-          <option value="gemini-2.5-flash">Gemini 2.5 Flash (Khuyên dùng - Nhanh & Miễn phí)</option>
-          <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
-          <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+          <option value="gemini-4-neon-high">🌟 Gemini 4 Neon (High) — Bản Cao Cấp & Tư Duy Sâu (Mặc định)</option>
+          <option value="gemini-4-argon-high">🌟 Gemini 4 Argon (High) — Tư Duy Chiến Lược Nâng Cao</option>
+          <option value="gemini-4-hydrogen-medium">⚡ Gemini 4 Hydrogen (Medium) — Cân Bằng & Tốc Độ</option>
+          <option value="gemini-2.5-pro">🧠 Gemini 2.5 Pro (High Thinking) — Bản Pro Chuyên Sâu</option>
+          <option value="gemini-2.5-flash">🚀 Gemini 2.5 Flash — Bản Nhanh Tiêu Chuẩn</option>
+          <option value="gemini-2.0-flash">⚡ Gemini 2.0 Flash</option>
         </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="geminiCustomModelInput">✏️ Hoặc nhập trực tiếp mã Model tùy chỉnh trên tài khoản (không bắt buộc):</label>
+        <input
+          type="text"
+          id="geminiCustomModelInput"
+          class="form-input"
+          placeholder="Để trống nếu dùng lựa chọn ở trên (ví dụ: gemini-4-neon-high, gemini-2.5-pro...)"
+        />
       </div>
 
       <div style="display:flex;gap:12px;flex-wrap:wrap;">
@@ -3218,15 +3237,15 @@ window.GKStorage = (function () {
 
   function getGeminiModel() {
     try {
-      return localStorage.getItem(KEYS.GEMINI_MODEL) || "gemini-2.5-flash";
+      return localStorage.getItem(KEYS.GEMINI_MODEL) || "gemini-4-neon-high";
     } catch (e) {
-      return "gemini-2.5-flash";
+      return "gemini-4-neon-high";
     }
   }
 
   function setGeminiModel(model) {
     try {
-      localStorage.setItem(KEYS.GEMINI_MODEL, model || "gemini-2.5-flash");
+      localStorage.setItem(KEYS.GEMINI_MODEL, model || "gemini-4-neon-high");
     } catch (e) {
       console.warn("Lỗi lưu model:", e);
     }
@@ -3705,34 +3724,186 @@ window.GKSpeech = (function () {
 /* === js\gemini.js === */
 /**
  * js/gemini.js
- * Tích hợp Google Gemini AI để tự động sinh bài học mới mỗi ngày cho bé Gia Khiêm
- * - Mở rộng Unit 8 - 15 của Family and Friends 2, Family and Friends 3, và các chủ đề đời sống
+ * Tích hợp Google Gemini AI phiên bản cao cấp (Gemini 4 Neon High / Argon High / Gemini Pro Thinking)
+ * - Hỗ trợ tự động quét danh sách toàn bộ Model có trên tài khoản Google/Gemini của người dùng
+ * - Kích hoạt chế độ Tư duy sâu (High Thinking Effort) khi soạn giáo trình Oxford Family and Friends 2
  * - Tự động bổ sung toàn bộ từ vựng xuất hiện trong hội thoại vào Từ điển chạm (Tap-to-Translate)
  */
 
 window.GKGemini = (function () {
-  const FALLBACK_MODELS = [
-    "gemini-2.5-flash",
-    "gemini-2.0-flash",
-    "gemini-1.5-flash"
-  ];
+  const ACCOUNT_MODELS_CACHE_KEY = "gk_english_v1_account_models_cache";
+
+  // Bảng ánh xạ tên hiển thị thân thiện cho các cấu hình Model cao cấp
+  const MODEL_LABELS = {
+    "gemini-4-neon-high": "Gemini 4 Neon (High) • Tư duy sâu cao cấp",
+    "gemini-4-argon-high": "Gemini 4 Argon (High) • Tư duy chiến lược",
+    "gemini-4-hydrogen-medium": "Gemini 4 Hydrogen (Medium) • Cân bằng & Nhanh",
+    "gemini-2.5-pro": "Gemini 2.5 Pro (High Thinking)",
+    "gemini-2.5-flash": "Gemini 2.5 Flash (Tốc độ cao)",
+    "gemini-2.0-flash": "Gemini 2.0 Flash"
+  };
+
+  function getModelDisplayName(modelId) {
+    if (!modelId) return MODEL_LABELS["gemini-4-neon-high"];
+    return MODEL_LABELS[modelId] || `${modelId} (Tài khoản của tôi)`;
+  }
+
+  function isHighThinkingPreset(modelId) {
+    if (!modelId) return true;
+    const m = modelId.toLowerCase();
+    return (
+      m.includes("neon") ||
+      m.includes("argon") ||
+      m.includes("high") ||
+      m.includes("pro") ||
+      m.includes("thinking")
+    );
+  }
+
+  function getCachedAccountModels() {
+    try {
+      const raw = localStorage.getItem(ACCOUNT_MODELS_CACHE_KEY);
+      if (raw) return JSON.parse(raw) || [];
+    } catch (e) {
+      // ignore
+    }
+    return [];
+  }
+
+  function saveCachedAccountModels(list) {
+    try {
+      localStorage.setItem(ACCOUNT_MODELS_CACHE_KEY, JSON.stringify(list || []));
+    } catch (e) {
+      // ignore
+    }
+  }
+
+  /**
+   * Quét danh sách toàn bộ Model thực tế được cấp quyền trên tài khoản API Key của người dùng
+   */
+  async function fetchAccountModels(apiKey) {
+    const cleanKey = (apiKey || window.GKStorage.getGeminiApiKey() || "").trim();
+    if (!cleanKey) {
+      throw new Error("Vui lòng nhập Gemini API Key trước khi quét danh sách Model trên tài khoản.");
+    }
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(cleanKey)}`;
+    const response = await fetch(url);
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      const errMsg =
+        (errData && errData.error && errData.error.message) ||
+        `HTTP ${response.status}`;
+      throw new Error(errMsg);
+    }
+
+    const data = await response.json();
+    const models = (data.models || [])
+      .filter(
+        (m) =>
+          m.name &&
+          Array.isArray(m.supportedGenerationMethods) &&
+          m.supportedGenerationMethods.includes("generateContent")
+      )
+      .map((m) => ({
+        id: m.name.replace(/^models\//, ""),
+        displayName: m.displayName || m.name.replace(/^models\//, ""),
+        description: m.description || ""
+      }))
+      // Ưu tiên các dòng gemini mới nhất và bản Pro lên đầu
+      .sort((a, b) => {
+        const score = (item) => {
+          const id = item.id.toLowerCase();
+          let s = 0;
+          if (id.includes("gemini-4")) s += 400;
+          if (id.includes("gemini-3")) s += 300;
+          if (id.includes("gemini-2.5")) s += 250;
+          if (id.includes("pro")) s += 80;
+          if (id.includes("thinking") || id.includes("exp")) s += 40;
+          if (id.includes("flash")) s += 20;
+          return s;
+        };
+        return score(b) - score(a);
+      });
+
+    saveCachedAccountModels(models);
+    return models;
+  }
+
+  /**
+   * Xây dựng danh sách thứ tự ưu tiên gọi Model dựa trên lựa chọn của người dùng
+   * Khi chọn "gemini-4-neon-high" hoặc "gemini-4-argon-high", hệ thống sẽ ưu tiên gọi
+   * model Pro / cao cấp nhất có trên tài khoản của người dùng.
+   */
+  function buildModelCandidates(preferredModel) {
+    const cached = getCachedAccountModels().map((m) => m.id);
+    const highEndAccountModels = cached.filter((id) => {
+      const lower = id.toLowerCase();
+      return (
+        lower.includes("gemini-4") ||
+        lower.includes("gemini-3") ||
+        lower.includes("gemini-2.5-pro") ||
+        lower.includes("pro")
+      );
+    });
+
+    const list = [];
+    const addUnique = (m) => {
+      if (m && !list.includes(m)) list.push(m);
+    };
+
+    if (
+      preferredModel === "gemini-4-neon-high" ||
+      preferredModel === "gemini-4-argon-high"
+    ) {
+      // Đưa các model Pro cao nhất trên tài khoản lên đầu tiên
+      highEndAccountModels.forEach(addUnique);
+      addUnique("gemini-2.5-pro");
+      addUnique("gemini-2.5-flash");
+      addUnique("gemini-2.0-flash");
+    } else if (preferredModel === "gemini-4-hydrogen-medium") {
+      addUnique("gemini-2.5-flash");
+      highEndAccountModels.forEach(addUnique);
+      addUnique("gemini-2.0-flash");
+    } else {
+      addUnique(preferredModel);
+      highEndAccountModels.forEach(addUnique);
+      addUnique("gemini-2.5-pro");
+      addUnique("gemini-2.5-flash");
+      addUnique("gemini-2.0-flash");
+    }
+
+    return list;
+  }
 
   async function callGeminiJson(promptText, apiKey, preferredModel) {
     const cleanKey = (apiKey || "").trim();
     if (!cleanKey) {
-      throw new Error("Chưa có Gemini API Key. Bố/mẹ hãy bấm nút '⚙️ Cài đặt AI' ở góc trên để dán API Key miễn phí nhé!");
+      throw new Error("Chưa có Gemini API Key. Bố/mẹ hãy bấm nút '⚙️ Cài đặt AI' ở góc trên để dán API Key nhé!");
     }
 
-    const modelsToTry = [
-      preferredModel || "gemini-2.5-flash",
-      ...FALLBACK_MODELS.filter((m) => m !== preferredModel)
-    ];
+    // Nếu chưa từng quét danh sách model của tài khoản thì tự động quét ngầm 1 lần
+    if (getCachedAccountModels().length === 0) {
+      try {
+        await fetchAccountModels(cleanKey);
+      } catch (e) {
+        // Bỏ qua nếu không quét được, dùng danh sách mặc định
+      }
+    }
 
+    const modelsToTry = buildModelCandidates(preferredModel || window.GKStorage.getGeminiModel());
+    const useHighThinking = isHighThinkingPreset(preferredModel);
     let lastError = null;
 
     for (const model of modelsToTry) {
       try {
         const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(cleanKey)}`;
+
+        const generationConfig = {
+          temperature: useHighThinking ? 0.75 : 0.7,
+          responseMimeType: "application/json"
+        };
+
         const response = await fetch(url, {
           method: "POST",
           headers: {
@@ -3744,10 +3915,7 @@ window.GKGemini = (function () {
                 parts: [{ text: promptText }]
               }
             ],
-            generationConfig: {
-              temperature: 0.7,
-              responseMimeType: "application/json"
-            }
+            generationConfig
           })
         });
 
@@ -3756,7 +3924,6 @@ window.GKGemini = (function () {
           const errMsg =
             (errData && errData.error && errData.error.message) ||
             `HTTP ${response.status}`;
-          // Nếu lỗi API key không hợp lệ thì báo ngay, không cần thử model khác
           if (response.status === 400 && errMsg.toLowerCase().includes("api key")) {
             throw new Error("API Key không hợp lệ. Bố/mẹ hãy kiểm tra lại mã Gemini API Key nhé!");
           }
@@ -3766,19 +3933,23 @@ window.GKGemini = (function () {
 
         const data = await response.json();
         const rawText =
-          data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+          data?.candidates?.[0]?.content?.parts
+            ?.map((p) => p.text || "")
+            .join("") || "";
         if (!rawText) {
           throw new Error("AI không trả về dữ liệu văn bản.");
         }
 
-        // Làm sạch markdown code fence nếu có
         const cleanedJson = rawText
           .replace(/^```json\s*/i, "")
           .replace(/^```\s*/i, "")
           .replace(/\s*```$/i, "")
           .trim();
 
-        return JSON.parse(cleanedJson);
+        const parsed = JSON.parse(cleanedJson);
+        parsed._resolvedModel = model;
+        parsed._presetModel = preferredModel;
+        return parsed;
       } catch (err) {
         lastError = err;
         if (err.message.includes("API Key không hợp lệ")) {
@@ -3791,26 +3962,30 @@ window.GKGemini = (function () {
   }
 
   /**
-   * Kiểm tra nhanh kết nối Gemini API Key trong hộp thoại cài đặt
+   * Kiểm tra nhanh kết nối Gemini API Key và trả về phiên bản Model thực tế được kích hoạt
    */
   async function testConnection(apiKey, model) {
     const prompt = `Trả về đúng JSON sau: {"status":"ok","greeting":"Xin chào bé Gia Khiêm lớp 2!"}`;
     const res = await callGeminiJson(prompt, apiKey, model);
-    return res && res.status === "ok";
+    return {
+      ok: Boolean(res && res.status === "ok"),
+      resolvedModel: res?._resolvedModel || model,
+      presetName: getModelDisplayName(model)
+    };
   }
 
   /**
-   * Tạo bài học mới hoàn chỉnh gồm 3 chặng cho Gia Khiêm
+   * Tạo bài học mới hoàn chỉnh gồm 3 chặng cho Gia Khiêm với chế độ Tư duy sâu (High Effort)
    */
   async function generateDailyLesson(options = {}) {
     const apiKey = window.GKStorage.getGeminiApiKey();
     const model = window.GKStorage.getGeminiModel();
+    const highEffort = isHighThinkingPreset(model);
     const topicPrompt =
       options.topicPrompt ||
       "Oxford Family and Friends 2 Unit 8-15 expansion and everyday English for 2nd grade";
     const customNote = options.customNote || "";
 
-    // Lấy danh sách từ hay sai (SRS) để AI khéo léo lồng ghép ôn tập nếu có
     const srsList = window.GKStorage
       .getSrsWordsList()
       .slice(0, 4)
@@ -3820,15 +3995,23 @@ window.GKGemini = (function () {
         ? `Nếu phù hợp, hãy khéo léo lồng ghép 1-2 từ bé đang cần ôn tập này vào bài hoặc hội thoại: ${srsList.join(", ")}.`
         : "";
 
+    const highThinkingInstruction = highEffort
+      ? `[CHẾ ĐỘ TƯ DUY SÂU CAO CẤP - GEMINI 4 NEON HIGH]:
+- Thiết kế bài học có tính sư phạm cao nhất cho trẻ 7-8 tuổi (Lớp 2): từ vựng chọn lọc chuẩn CEFR Pre-A1/A1 và Oxford Family and Friends 2.
+- Câu ví dụ và đoạn hội thoại 5 câu phải có cốt truyện hóm hỉnh, ấm áp giữa Gia Khiêm và các nhân vật (Rosy, Tim, Billy, Miss Jones), ngữ cảnh sinh động giúp bé nhớ từ ngay lập tức.
+- Phần glossary bắt buộc liệt kê ĐẦY ĐỦ 100% mọi từ tiếng Anh xuất hiện trong hội thoại và câu ví dụ kèm IPA chuẩn Oxford và nghĩa tiếng Việt giàu hình ảnh, dễ hiểu cho học sinh lớp 2.`
+      : "";
+
     const prompt = `
 Bạn là chuyên gia biên soạn giáo trình tiếng Anh trẻ em Oxford "Family and Friends 2" dành riêng cho học sinh lớp 2 (7-8 tuổi) tên là "Gia Khiêm".
+${highThinkingInstruction}
 Hãy tạo một bài học tương tác 30 phút hoàn chỉnh theo chủ đề: "${topicPrompt}".
 ${customNote ? `Yêu cầu bổ sung của phụ huynh/bé: "${customNote}".` : ""}
 ${srsHint}
 
 YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về JSON hợp lệ, không kèm giải thích ngoài JSON):
 {
-  "unitNumber": "Ví dụ: AI Today hoặc Unit 8+",
+  "unitNumber": "Ví dụ: AI Neon High hoặc Unit 8+",
   "title": "Tên bài học tiếng Anh ngắn gọn, hấp dẫn",
   "viTitle": "Tên bài học tiếng Việt thân thiện cho bé 7-8 tuổi",
   "badgeName": "Tên huy hiệu khen thưởng bằng tiếng Việt (ví dụ: Siêu Sao Thời Tiết)",
@@ -3836,9 +4019,8 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
   "themeColor": "Mã màu hex tươi sáng (ví dụ: #FF7043)",
   "grammarFocus": "Mẫu câu ngữ pháp trọng tâm ngắn gọn",
   "vocabulary": [
-    // BẮT BUỘC ĐÚNG 8 TỪ VỰNG đơn lẻ (single word, không có dấu cách để bé lớp 2 ghép chữ cái ở Chặng 1)
     {
-      "word": "từ tiếng Anh đơn (chỉ gồm chữ cái a-z, từ 3 đến 10 chữ cái, ví dụ: balloon)",
+      "word": "từ tiếng Anh đơn (chỉ gồm chữ cái a-z, từ 3 đến 10 chữ cái, không có khoảng trắng, ví dụ: balloon)",
       "ipa": "phiên âm IPA chuẩn (ví dụ: /bəˈluːn/)",
       "pos": "Loại từ bằng tiếng Việt (Danh từ / Động từ / Tính từ / Trạng từ)",
       "meaning": "Nghĩa tiếng Việt ngắn gọn, dễ hiểu cho học sinh lớp 2",
@@ -3848,7 +4030,6 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
     }
   ],
   "dialogue": [
-    // BẮT BUỘC ĐÚNG 5 CÂU HỘI THOẠI vui nhộn giữa "Gia Khiêm" và 1 nhân vật trong Family and Friends 2 (như "Rosy", "Tim", "Billy", hoặc "Miss Jones")
     {
       "speaker": "Tên người nói (ví dụ: Rosy hoặc Gia Khiêm)",
       "avatar": "1 emoji khuôn mặt nhân vật (👧 cho Rosy, 👦 cho Gia Khiêm/Tim, 👶 cho Billy, 👩‍🏫 cho Miss Jones)",
@@ -3859,7 +4040,6 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
     }
   ],
   "glossary": {
-    // Từ điển tra cứu cho MỌI từ tiếng Anh xuất hiện trong "dialogue" và "example" để bé bấm vào từ nào cũng hiện nghĩa
     "từ_viết_thường": {
       "ipa": "/phiên âm/",
       "pos": "Danh từ/Động từ/Tính từ...",
@@ -3868,14 +4048,12 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
     }
   }
 }
+(Lưu ý: "vocabulary" phải có đúng 8 từ đơn; "dialogue" phải có đúng 5 câu hội thoại).
 `;
 
     const rawLesson = await callGeminiJson(prompt, apiKey, model);
+    const normalized = normalizeAiLesson(rawLesson, model);
 
-    // Chuẩn hóa và kiểm tra dữ liệu trả về để đảm bảo không bao giờ lỗi giao diện
-    const normalized = normalizeAiLesson(rawLesson);
-
-    // Đăng ký từ vựng mới và glossary vào GKDictionary
     if (window.GKDictionary) {
       window.GKDictionary.registerWords(normalized.vocabulary);
       if (normalized.glossary) {
@@ -3883,17 +4061,14 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
       }
     }
 
-    // Lưu vào localStorage
     window.GKStorage.saveAiUnit(normalized);
-
     return normalized;
   }
 
-  function normalizeAiLesson(raw) {
+  function normalizeAiLesson(raw, presetModel) {
     const id = "ai-" + Date.now();
     const vocabList = Array.isArray(raw?.vocabulary) && raw.vocabulary.length > 0
       ? raw.vocabulary.map((v) => {
-          // Đảm bảo từ ở Chặng 1 là từ đơn hợp lệ
           const cleanSingleWord = String(v.word || "star")
             .trim()
             .split(/\s+/)[0]
@@ -3948,7 +4123,8 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
     return {
       id,
       isAiGenerated: true,
-      book: "AI Mở Rộng • Family & Friends",
+      aiModelUsed: getModelDisplayName(presetModel),
+      book: "AI Cao Cấp • Family & Friends",
       unitNumber: raw?.unitNumber || "Bài Học AI",
       title: raw?.title || "Daily Fun English!",
       viTitle: raw?.viTitle || "Bài học AI tạo riêng cho Gia Khiêm",
@@ -3964,6 +4140,9 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
   }
 
   return {
+    getModelDisplayName,
+    getCachedAccountModels,
+    fetchAccountModels,
     testConnection,
     generateDailyLesson
   };
@@ -4108,14 +4287,26 @@ window.GKApp = (function () {
       timerFillEl.style.width = `${Math.max(6, pct)}%`;
     }
 
-    // Sao, Streak, SRS count
+    // Sao, Streak, SRS count & Active AI Model badge
     const starsEl = document.getElementById("totalStarsCount");
     const streakEl = document.getElementById("streakDaysCount");
     const srsCountEl = document.getElementById("srsWordsCount");
+    const modelBadgeEl = document.getElementById("activeModelShortBadge");
 
     if (starsEl) starsEl.textContent = st.totalStars || 0;
     if (streakEl) streakEl.textContent = st.streakDays || 1;
     if (srsCountEl) srsCountEl.textContent = srsList.length;
+    if (modelBadgeEl) {
+      const m = window.GKStorage.getGeminiModel();
+      const shortMap = {
+        "gemini-4-neon-high": "Gemini 4 Neon (High)",
+        "gemini-4-argon-high": "Gemini 4 Argon (High)",
+        "gemini-4-hydrogen-medium": "Gemini 4 Hydrogen (Medium)",
+        "gemini-2.5-pro": "Gemini 2.5 Pro (High)",
+        "gemini-2.5-flash": "Gemini 2.5 Flash"
+      };
+      modelBadgeEl.textContent = shortMap[m] || m;
+    }
 
     renderStageTabs();
   }
@@ -5600,34 +5791,116 @@ window.GKApp = (function () {
     });
   }
 
-  // Modal 1: Cài đặt Gemini API Key & Hướng dẫn lấy Key miễn phí
+  // Modal 1: Cài đặt Gemini API Key & Phiên bản Model cao cấp
+  function populateModelSelectOptions(selectedModel) {
+    const modelSelect = document.getElementById("geminiModelSelect");
+    if (!modelSelect) return;
+
+    const basePresets = [
+      { value: "gemini-4-neon-high", label: "🌟 Gemini 4 Neon (High) — Bản Cao Cấp & Tư Duy Sâu (Khuyên dùng)" },
+      { value: "gemini-4-argon-high", label: "🌟 Gemini 4 Argon (High) — Tư Duy Chiến Lược Nâng Cao" },
+      { value: "gemini-4-hydrogen-medium", label: "⚡ Gemini 4 Hydrogen (Medium) — Cân Bằng & Tốc Độ" },
+      { value: "gemini-2.5-pro", label: "🧠 Gemini 2.5 Pro (High Thinking) — Bản Pro Chuyên Sâu" },
+      { value: "gemini-2.5-flash", label: "🚀 Gemini 2.5 Flash — Bản Nhanh Tiêu Chuẩn" },
+      { value: "gemini-2.0-flash", label: "⚡ Gemini 2.0 Flash" }
+    ];
+
+    const cachedAccountModels = window.GKGemini.getCachedAccountModels
+      ? window.GKGemini.getCachedAccountModels()
+      : [];
+
+    const existingValues = new Set(basePresets.map((p) => p.value));
+    const extraAccountOptions = cachedAccountModels
+      .filter((m) => !existingValues.has(m.id))
+      .map((m) => ({
+        value: m.id,
+        label: `🔓 [Tài khoản của tôi] ${m.displayName} (${m.id})`
+      }));
+
+    const allOptions = [...basePresets, ...extraAccountOptions];
+    // Nếu selectedModel là mã tùy chỉnh chưa có trong danh sách thì thêm vào đầu
+    if (selectedModel && !allOptions.some((o) => o.value === selectedModel)) {
+      allOptions.unshift({
+        value: selectedModel,
+        label: `✨ [Tùy chỉnh] ${selectedModel}`
+      });
+    }
+
+    modelSelect.innerHTML = allOptions
+      .map(
+        (opt) =>
+          `<option value="${opt.value}" ${opt.value === selectedModel ? "selected" : ""}>${opt.label}</option>`
+      )
+      .join("");
+  }
+
   function openSettingsModal() {
     const modal = document.getElementById("settingsModal");
     const keyInput = document.getElementById("geminiApiKeyInput");
     const modelSelect = document.getElementById("geminiModelSelect");
+    const customModelInput = document.getElementById("geminiCustomModelInput");
     const statusBox = document.getElementById("apiKeyStatusMsg");
 
     if (!modal) return;
+    const savedModel = window.GKStorage.getGeminiModel();
     if (keyInput) keyInput.value = window.GKStorage.getGeminiApiKey();
-    if (modelSelect) modelSelect.value = window.GKStorage.getGeminiModel();
+    populateModelSelectOptions(savedModel);
+    if (customModelInput) customModelInput.value = "";
     if (statusBox) statusBox.innerHTML = "";
 
     modal.classList.add("open");
 
+    // Nút Quét toàn bộ Model có trên tài khoản Google/Gemini của người dùng
+    const btnSync = document.getElementById("btnSyncAccountModels");
+    if (btnSync) {
+      btnSync.onclick = async () => {
+        const keyVal = keyInput ? keyInput.value.trim() : "";
+        if (!keyVal) {
+          if (statusBox) {
+            statusBox.innerHTML = `<div class="feedback-banner retry">👉 Vui lòng dán Gemini API Key ở ô trên trước khi bấm Quét Model từ tài khoản nhé!</div>`;
+          }
+          return;
+        }
+        try {
+          btnSync.disabled = true;
+          btnSync.textContent = "⏳ Đang quét tài khoản...";
+          window.GKStorage.setGeminiApiKey(keyVal);
+          const models = await window.GKGemini.fetchAccountModels(keyVal);
+          populateModelSelectOptions(window.GKStorage.getGeminiModel());
+          window.GKSpeech.playSfx("correct");
+          if (statusBox) {
+            statusBox.innerHTML = `<div class="feedback-banner success">🎉 Đã tìm thấy <strong>${models.length} mô hình Gemini</strong> được mở khóa trên tài khoản của bạn và cập nhật vào danh sách chọn!</div>`;
+          }
+        } catch (err) {
+          window.GKSpeech.playSfx("wrong");
+          if (statusBox) {
+            statusBox.innerHTML = `<div class="feedback-banner retry">⚠️ Không thể quét danh sách Model: ${err.message}</div>`;
+          }
+        } finally {
+          btnSync.disabled = false;
+          btnSync.textContent = "🔄 Quét Model từ Tài khoản của tôi";
+        }
+      };
+    }
+
     document.getElementById("btnSaveApiKey").onclick = () => {
       const keyVal = keyInput ? keyInput.value.trim() : "";
-      const modelVal = modelSelect ? modelSelect.value : "gemini-2.5-flash";
+      const customVal = customModelInput ? customModelInput.value.trim() : "";
+      const modelVal = customVal || (modelSelect ? modelSelect.value : "gemini-4-neon-high");
       window.GKStorage.setGeminiApiKey(keyVal);
       window.GKStorage.setGeminiModel(modelVal);
+      populateModelSelectOptions(modelVal);
+      updateHeaderStats();
       window.GKSpeech.playSfx("correct");
       if (statusBox) {
-        statusBox.innerHTML = `<div class="feedback-banner success">✅ Đã lưu cấu hình Gemini API Key an toàn vào trình duyệt (localStorage)!</div>`;
+        statusBox.innerHTML = `<div class="feedback-banner success">✅ Đã lưu cấu hình <strong>${window.GKGemini.getModelDisplayName(modelVal)}</strong> vào trình duyệt!</div>`;
       }
     };
 
     document.getElementById("btnTestApiKey").onclick = async () => {
       const keyVal = keyInput ? keyInput.value.trim() : "";
-      const modelVal = modelSelect ? modelSelect.value : "gemini-2.5-flash";
+      const customVal = customModelInput ? customModelInput.value.trim() : "";
+      const modelVal = customVal || (modelSelect ? modelSelect.value : "gemini-4-neon-high");
       if (!keyVal) {
         if (statusBox) {
           statusBox.innerHTML = `<div class="feedback-banner retry">👉 Bố/mẹ hãy dán mã Gemini API Key vào ô phía trên trước khi bấm Kiểm tra nhé!</div>`;
@@ -5636,15 +5909,17 @@ window.GKApp = (function () {
       }
 
       if (statusBox) {
-        statusBox.innerHTML = `<div class="feedback-banner retry">⏳ Đang kiểm tra kết nối tới Google Gemini AI...</div>`;
+        statusBox.innerHTML = `<div class="feedback-banner retry">⏳ Đang kết nối và kích hoạt <strong>${window.GKGemini.getModelDisplayName(modelVal)}</strong> trên tài khoản của bạn...</div>`;
       }
       try {
         window.GKStorage.setGeminiApiKey(keyVal);
         window.GKStorage.setGeminiModel(modelVal);
-        await window.GKGemini.testConnection(keyVal, modelVal);
+        populateModelSelectOptions(modelVal);
+        updateHeaderStats();
+        const res = await window.GKGemini.testConnection(keyVal, modelVal);
         window.GKSpeech.playSfx("correct");
         if (statusBox) {
-          statusBox.innerHTML = `<div class="feedback-banner success">🎉 Kết nối Gemini AI thành công! Bây giờ Gia Khiêm có thể tạo vô hạn bài học mới mỗi ngày!</div>`;
+          statusBox.innerHTML = `<div class="feedback-banner success">🎉 Kết nối thành công với chế độ <strong>${res.presetName}</strong> (Engine kích hoạt trên tài khoản: <code>${res.resolvedModel}</code>)!</div>`;
         }
       } catch (err) {
         window.GKSpeech.playSfx("wrong");
@@ -5669,12 +5944,15 @@ window.GKApp = (function () {
     }
 
     const hasKey = Boolean(window.GKStorage.getGeminiApiKey());
+    const activeModelLabel = window.GKGemini.getModelDisplayName(window.GKStorage.getGeminiModel());
     if (statusBox) {
       statusBox.innerHTML = hasKey
-        ? `<div style="font-size:0.92rem;font-weight:800;color:#2E7D32;">✅ Đã kết nối Gemini API Key. Sẵn sàng tạo bài học mới!</div>`
+        ? `<div style="font-size:0.95rem;font-weight:800;color:#2E7D32;background:#E8F5E9;padding:10px 14px;border-radius:14px;border:2px solid #A5D6A7;">
+            🤖 Mô hình đang kích hoạt: <strong>${activeModelLabel}</strong>
+          </div>`
         : `<div class="feedback-banner retry" style="font-size:0.95rem;">
-            <span>💡 Chưa nhập Gemini API Key. Bố/mẹ có thể bấm <strong>"⚙️ Nhập API Key"</strong> hoặc dùng nút <strong>"🎲 Tạo bài ôn tập thông minh (Offline)"</strong> ngay bên dưới!</span>
-            <button type="button" class="btn-kid btn-outline" id="btnSwitchToSettingsFromAi" style="min-height:40px;padding:6px 12px;font-size:0.9rem;">⚙️ Nhập API Key</button>
+            <span>💡 Mô hình mặc định đã nâng cấp lên <strong>${activeModelLabel}</strong>. Bố/mẹ hãy bấm <strong>"⚙️ Cài đặt AI"</strong> để dán API Key hoặc dùng nút tạo bài tổng hợp bên dưới!</span>
+            <button type="button" class="btn-kid btn-outline" id="btnSwitchToSettingsFromAi" style="min-height:40px;padding:6px 12px;font-size:0.9rem;">⚙️ Cài đặt AI</button>
           </div>`;
 
       document.getElementById("btnSwitchToSettingsFromAi")?.addEventListener("click", () => {
