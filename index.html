@@ -15,12 +15,6 @@
     rel="stylesheet"
   />
   <style>
-/**
- * css/styles.css
- * Giao diện thân thiện trẻ 7-8 tuổi (Kid-First UI/UX) cho bé Gia Khiêm (Lớp 2)
- * Tối ưu đặc biệt cho màn hình iPhone 11 Pro Max (414 x 896 px) & Máy tính
- * Làm nổi bật thông tin học tập, tích hợp 6 trò chơi và hệ thống khen ngợi nhiệt tình.
- */
 
 :root {
   --bg-cream: #FFFDF5;
@@ -45,46 +39,37 @@
   --shadow-card: 0 8px 22px rgba(30, 41, 59, 0.08);
   --shadow-pop: 0 16px 38px rgba(30, 41, 59, 0.2);
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
 }
-
 body {
   font-family: "Nunito", "Quicksand", -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(180deg, #E1F5FE 0%, #FFFDF5 38%, #FFF9C4 100%);
-  background-attachment: fixed;
+  background: linear-gradient(180deg, #E1F5FE 0%, #FFFDF5 45%, #FFF9C4 100%);
   color: var(--text-main);
   line-height: 1.5;
   min-height: 100vh;
   padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px));
   overflow-x: hidden;
 }
-
 button,
 input,
 select,
 textarea {
   font-family: inherit;
+  touch-action: manipulation;
 }
-
-/* ==========================================================================
-   HEADER & THANH TIẾN TRÌNH 30 PHÚT MỖI NGÀY
-   ========================================================================== */
 .top-header {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
+  background: #FFFFFF;
   border-bottom: 3px solid #B3E5FC;
   position: sticky;
   top: 0;
   z-index: 100;
   padding: 10px 16px;
-  box-shadow: 0 4px 14px rgba(2, 136, 209, 0.08);
+  box-shadow: 0 3px 10px rgba(2, 136, 209, 0.07);
 }
-
 .header-inner {
   max-width: 1120px;
   margin: 0 auto;
@@ -94,13 +79,11 @@ textarea {
   flex-wrap: wrap;
   gap: 10px;
 }
-
 .brand-profile {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .avatar-badge {
   width: 48px;
   height: 48px;
@@ -114,20 +97,17 @@ textarea {
   border: 2.5px solid #FFF;
   flex-shrink: 0;
 }
-
 .brand-text h1 {
   font-size: 1.25rem;
   font-weight: 900;
   color: #0D47A1;
   line-height: 1.15;
 }
-
 .brand-text p {
   font-size: 0.82rem;
   font-weight: 800;
   color: var(--text-muted);
 }
-
 .daily-timer-box {
   background: #F1F8E9;
   border: 2px solid #AED581;
@@ -138,15 +118,12 @@ textarea {
   gap: 10px;
   min-width: 210px;
 }
-
 .timer-icon {
   font-size: 1.25rem;
 }
-
 .timer-details {
   flex: 1;
 }
-
 .timer-label-row {
   display: flex;
   justify-content: space-between;
@@ -156,7 +133,6 @@ textarea {
   color: #1B5E20;
   margin-bottom: 2px;
 }
-
 .timer-bar-bg {
   width: 100%;
   height: 8px;
@@ -164,7 +140,6 @@ textarea {
   border-radius: 999px;
   overflow: hidden;
 }
-
 .timer-bar-fill {
   height: 100%;
   background: linear-gradient(90deg, #66BB6A, #2E7D32);
@@ -172,14 +147,12 @@ textarea {
   width: 10%;
   transition: width 0.5s ease;
 }
-
 .header-stats {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
-
 .stat-pill {
   display: inline-flex;
   align-items: center;
@@ -193,44 +166,34 @@ textarea {
   transition: transform 0.15s ease;
   min-height: 40px;
 }
-
 .stat-pill:hover {
   transform: translateY(-2px);
 }
-
 .stat-pill.stars-pill {
   background: #FFF8E1;
   border-color: #FFD54F;
   color: #E65100;
 }
-
 .stat-pill.streak-pill {
   background: #FBE9E7;
   border-color: #FFAB91;
   color: #D84315;
 }
-
 .stat-pill.srs-pill {
   background: #EDE7F6;
   border-color: #B39DDB;
   color: #4527A0;
 }
-
 .stat-pill.settings-pill {
   background: #E1F5FE;
   border-color: #81D4FA;
   color: #01579B;
 }
-
-/* ==========================================================================
-   THANH LƯU TỰ ĐỘNG & HỌC TIẾP BÀI ĐANG HỌC (AUTO-RESUME BANNER)
-   ========================================================================== */
 .app-container {
   max-width: 1080px;
   margin: 14px auto 0;
   padding: 0 12px;
 }
-
 .resume-progress-banner {
   background: linear-gradient(90deg, #FFF8E1 0%, #E8F5E9 100%);
   border: 2.5px solid #AED581;
@@ -244,7 +207,6 @@ textarea {
   gap: 10px;
   box-shadow: 0 4px 12px rgba(46, 125, 50, 0.08);
 }
-
 .resume-banner-left {
   display: flex;
   align-items: center;
@@ -253,7 +215,6 @@ textarea {
   font-size: 0.92rem;
   color: #1B5E20;
 }
-
 .resume-pin-badge {
   background: #2E7D32;
   color: #FFFFFF;
@@ -262,7 +223,6 @@ textarea {
   padding: 3px 10px;
   border-radius: 999px;
 }
-
 .resume-count-pill {
   background: #FFFFFF;
   border: 1.5px solid #81C784;
@@ -273,13 +233,11 @@ textarea {
   border-radius: 999px;
   margin-left: 4px;
 }
-
 .resume-banner-actions {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .btn-resume-next {
   background: linear-gradient(135deg, #FF7043, #E64A19);
   color: #FFF;
@@ -291,7 +249,6 @@ textarea {
   font-size: 0.85rem;
   cursor: pointer;
 }
-
 .btn-resume-Sound {
   background: #E3F2FD;
   color: #0D47A1;
@@ -302,10 +259,6 @@ textarea {
   font-size: 0.82rem;
   cursor: pointer;
 }
-
-/* ==========================================================================
-   THANH CHỌN UNIT & TẠO BÀI HỌC AI
-   ========================================================================== */
 .curriculum-bar {
   background: var(--card-bg);
   border-radius: var(--radius-lg);
@@ -319,7 +272,6 @@ textarea {
   gap: 10px;
   margin-bottom: 14px;
 }
-
 .unit-selector-group {
   display: flex;
   align-items: center;
@@ -327,7 +279,6 @@ textarea {
   flex-wrap: wrap;
   flex: 1;
 }
-
 .unit-label-tag {
   background: #E3F2FD;
   color: #0D47A1;
@@ -337,7 +288,6 @@ textarea {
   font-size: 0.9rem;
   white-space: nowrap;
 }
-
 .unit-select {
   flex: 1;
   min-width: 220px;
@@ -352,7 +302,6 @@ textarea {
   cursor: pointer;
   outline: none;
 }
-
 .ai-create-btn {
   background: linear-gradient(135deg, #7E57C2, #5E35B1);
   color: #FFF;
@@ -370,17 +319,12 @@ textarea {
   min-height: 46px;
   box-shadow: 0 4px 12px rgba(126, 87, 194, 0.3);
 }
-
-/* ==========================================================================
-   THANH ĐIỀU HƯỚNG 4 CHẶNG HỌC & TRÒ CHƠI
-   ========================================================================== */
 .stages-nav {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin-bottom: 16px;
 }
-
 .stage-tab {
   background: #FFFFFF;
   border: 2.5px solid #CFD8DC;
@@ -396,18 +340,15 @@ textarea {
   position: relative;
   min-height: 68px;
 }
-
 .stage-tab.active {
   background: linear-gradient(135deg, #FFF8E1, #FFFFFF);
   border-color: #FF8F00;
   box-shadow: 0 6px 18px rgba(255, 160, 0, 0.22);
 }
-
 .stage-tab.completed {
   border-color: #4CAF50;
   background: #F1F8E9;
 }
-
 .stage-icon-circle {
   width: 44px;
   height: 44px;
@@ -419,20 +360,16 @@ textarea {
   font-size: 1.45rem;
   flex-shrink: 0;
 }
-
 .stage-tab.active .stage-icon-circle {
   background: #FFE082;
 }
-
 .stage-tab.completed .stage-icon-circle {
   background: #C8E6C9;
 }
-
 .stage-info {
   flex: 1;
   min-width: 0;
 }
-
 .stage-time-badge {
   display: inline-block;
   font-size: 0.72rem;
@@ -443,7 +380,6 @@ textarea {
   color: #0277BD;
   margin-bottom: 2px;
 }
-
 .stage-title {
   font-size: 0.98rem;
   font-weight: 900;
@@ -453,7 +389,6 @@ textarea {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .stage-subtitle {
   font-size: 0.78rem;
   font-weight: 700;
@@ -463,17 +398,12 @@ textarea {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .stage-check-badge {
   position: absolute;
   top: 6px;
   right: 8px;
   font-size: 0.95rem;
 }
-
-/* ==========================================================================
-   TỪ ĐIỂN CHẠM (TAP-TO-TRANSLATE)
-   ========================================================================== */
 .tappable-word {
   background: rgba(227, 242, 253, 0.55);
   border: none;
@@ -488,7 +418,6 @@ textarea {
   transition: all 0.15s ease;
   display: inline-block;
 }
-
 .tappable-word:hover,
 .tappable-word:active {
   background: #FFF59D;
@@ -496,10 +425,6 @@ textarea {
   border-bottom-style: solid;
   transform: scale(1.05);
 }
-
-/* ==========================================================================
-   STAGE CARD & NÚT BẤM LỚN RÕ NÉT
-   ========================================================================== */
 .stage-card {
   background: var(--card-bg);
   border-radius: 26px;
@@ -508,7 +433,6 @@ textarea {
   border: 3.5px solid #B3E5FC;
   position: relative;
 }
-
 .stage-header-row {
   display: flex;
   align-items: center;
@@ -519,7 +443,6 @@ textarea {
   padding-bottom: 12px;
   border-bottom: 2px dashed #E2E8F0;
 }
-
 .stage-header-title h2 {
   font-size: 1.35rem;
   font-weight: 900;
@@ -529,13 +452,11 @@ textarea {
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .stage-header-title p {
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--text-muted);
 }
-
 .retry-pill-tag {
   background: #FFF3E0;
   color: #E65100;
@@ -544,7 +465,6 @@ textarea {
   border-radius: 999px;
   border: 1.5px solid #FFB74D;
 }
-
 .progress-pill {
   background: #FFF8E1;
   border: 2.5px solid #FFB300;
@@ -555,7 +475,6 @@ textarea {
   border-radius: 999px;
   white-space: nowrap;
 }
-
 .btn-kid {
   min-height: 48px;
   padding: 10px 20px;
@@ -572,46 +491,36 @@ textarea {
   transition: transform 0.1s ease, filter 0.15s ease;
   user-select: none;
 }
-
 .btn-kid:active {
   transform: translateY(2px);
   border-bottom-width: 2px;
 }
-
 .btn-primary {
   background: linear-gradient(135deg, #FF7043, #E64A19);
   color: #FFF;
   border-bottom-color: #BF360C;
 }
-
 .btn-secondary {
   background: linear-gradient(135deg, #29B6F6, #0288D1);
   color: #FFF;
   border-bottom-color: #01579B;
 }
-
 .btn-success {
   background: linear-gradient(135deg, #66BB6A, #2E7D32);
   color: #FFF;
   border-bottom-color: #1B5E20;
 }
-
 .btn-warning {
   background: linear-gradient(135deg, #FFD54F, #FFA000);
   color: #3E2723;
   border-bottom-color: #E65100;
 }
-
 .btn-outline {
   background: #F8FAFC;
   color: var(--text-main);
   border: 2.5px solid #CBD5E1;
   border-bottom-width: 4px;
 }
-
-/* ==========================================================================
-   LÀM NỔI BẬT THÔNG TIN HỌC TẬP (LEARNING FOCUS HIGHLIGHT)
-   ========================================================================== */
 .learning-focus-highlight {
   background: #FFFFFF;
   border: 3px solid #FFD54F;
@@ -620,38 +529,30 @@ textarea {
   margin: 10px 0 12px;
   box-shadow: 0 4px 12px rgba(255, 179, 0, 0.12);
 }
-
 .visual-meaning-vi {
   font-size: 1.45rem;
   font-weight: 900;
   color: #0F172A;
   line-height: 1.25;
 }
-
 .visual-ipa {
   font-size: 1rem;
   font-weight: 800;
   color: #0277BD;
   margin-top: 3px;
 }
-
 .revealed-english-word {
   font-size: 1.55rem;
   font-weight: 900;
   color: #2E7D32;
   margin-top: 4px;
 }
-
-/* ==========================================================================
-   CHẶNG 1: NHỚ MẶT CHỮ QUA HÌNH ẢNH
-   ========================================================================== */
 .stage1-layout {
   display: grid;
   grid-template-columns: 310px 1fr;
   gap: 20px;
   align-items: stretch;
 }
-
 .visual-card {
   background: linear-gradient(180deg, #FFFDE7 0%, #FFF59D 100%);
   border: 3.5px solid #FFD54F;
@@ -662,7 +563,6 @@ textarea {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .visual-card-top-row {
   display: flex;
   justify-content: space-between;
@@ -670,7 +570,6 @@ textarea {
   gap: 8px;
   margin-bottom: 8px;
 }
-
 .visual-pos-tag {
   background: #FF8F00;
   color: #FFFFFF;
@@ -679,7 +578,6 @@ textarea {
   padding: 3px 10px;
   border-radius: 999px;
 }
-
 .image-mode-switch {
   background: #FFFFFF;
   border: 2px solid #FFB300;
@@ -690,7 +588,6 @@ textarea {
   color: #E65100;
   cursor: pointer;
 }
-
 .visual-art-frame {
   width: 155px;
   height: 155px;
@@ -703,26 +600,22 @@ textarea {
   box-shadow: inset 0 0 0 3px #FFF9C4, 0 6px 14px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
-
 .visual-svg-img {
   width: 112px;
   height: 112px;
   object-fit: contain;
 }
-
 .visual-cartoon-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .audio-controls-row {
   display: flex;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
 }
-
 .spelling-workspace {
   background: #F8FDFF;
   border: 3px solid #B3E5FC;
@@ -732,7 +625,6 @@ textarea {
   flex-direction: column;
   justify-content: space-between;
 }
-
 .mode-badge-row {
   display: flex;
   align-items: center;
@@ -740,7 +632,6 @@ textarea {
   flex-wrap: wrap;
   gap: 8px;
 }
-
 .exercise-mode-tag {
   background: #E8F5E9;
   border: 2px solid #81C784;
@@ -750,7 +641,6 @@ textarea {
   border-radius: 999px;
   font-size: 0.9rem;
 }
-
 .letter-slots-container {
   display: flex;
   flex-wrap: wrap;
@@ -759,7 +649,6 @@ textarea {
   margin: 16px 0;
   min-height: 58px;
 }
-
 .letter-slot {
   width: 48px;
   height: 56px;
@@ -775,14 +664,12 @@ textarea {
   text-transform: lowercase;
   cursor: pointer;
 }
-
 .letter-slot.filled {
   border-style: solid;
   border-color: #0288D1;
   background: #E1F5FE;
   border-bottom-width: 5px;
 }
-
 .letter-slot.fixed {
   border-style: solid;
   border-color: #94A3B8;
@@ -790,7 +677,6 @@ textarea {
   color: #334155;
   cursor: default;
 }
-
 .letter-slot.correct {
   border-style: solid;
   border-color: #2E7D32;
@@ -798,7 +684,6 @@ textarea {
   color: #1B5E20;
   animation: bouncePop 0.35s ease;
 }
-
 .letter-slot.wrong {
   border-style: solid;
   border-color: #D32F2F;
@@ -806,7 +691,6 @@ textarea {
   color: #B71C1C;
   animation: shakeHorizontal 0.35s ease;
 }
-
 .letter-bank-container {
   display: flex;
   flex-wrap: wrap;
@@ -814,7 +698,6 @@ textarea {
   gap: 9px;
   margin: 12px 0 16px;
 }
-
 .letter-tile-btn {
   width: 52px;
   height: 56px;
@@ -831,19 +714,16 @@ textarea {
   justify-content: center;
   text-transform: lowercase;
 }
-
 .letter-tile-btn:disabled {
   opacity: 0.2;
   cursor: default;
 }
-
 .action-buttons-row {
   display: flex;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
 }
-
 .example-sentence-box {
   background: #FFFFFF;
   border: 2.5px solid #81D4FA;
@@ -855,30 +735,23 @@ textarea {
   justify-content: space-between;
   gap: 10px;
 }
-
 .example-hint-small {
   font-size: 0.76rem;
   font-weight: 900;
   color: #0277BD;
   margin-bottom: 2px;
 }
-
 .example-text-en {
   font-size: 1.12rem;
   font-weight: 900;
   color: #0D47A1;
 }
-
 .example-text-vi {
   font-size: 0.9rem;
   font-weight: 800;
   color: var(--text-muted);
   margin-top: 2px;
 }
-
-/* ==========================================================================
-   THANH GỢI Ý NHANH 6 TRÒ CHƠI LỒNG GHÉP TRONG BÀI HỌC
-   ========================================================================== */
 .embedded-games-strip {
   margin-top: 18px;
   padding: 12px 14px;
@@ -891,18 +764,15 @@ textarea {
   flex-wrap: wrap;
   gap: 10px;
 }
-
 .strip-title {
   font-size: 0.92rem;
   color: #4A148C;
 }
-
 .strip-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
-
 .strip-game-btn {
   background: #FFFFFF;
   border: 2px solid #AB47BC;
@@ -917,10 +787,6 @@ textarea {
   align-items: center;
   gap: 4px;
 }
-
-/* ==========================================================================
-   CHẶNG 2: HỘI THOẠI & BBC STORYTELLERS VIDEO
-   ========================================================================== */
 .bbc-storyteller-box {
   background: #FFF8E1;
   border: 3px solid #FFB300;
@@ -928,7 +794,6 @@ textarea {
   padding: 12px 14px;
   margin-bottom: 16px;
 }
-
 .bbc-story-header {
   display: flex;
   justify-content: space-between;
@@ -939,7 +804,6 @@ textarea {
   color: #E65100;
   margin-bottom: 8px;
 }
-
 .bbc-yt-link {
   background: #E65100;
   color: #FFF;
@@ -949,7 +813,6 @@ textarea {
   padding: 4px 10px;
   border-radius: 999px;
 }
-
 .bbc-video-frame {
   position: relative;
   width: 100%;
@@ -958,7 +821,6 @@ textarea {
   overflow: hidden;
   background: #000;
 }
-
 .bbc-video-frame iframe {
   position: absolute;
   inset: 0;
@@ -966,14 +828,12 @@ textarea {
   height: 100%;
   border: 0;
 }
-
 .substep-switcher {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-bottom: 16px;
 }
-
 .substep-btn {
   min-height: 48px;
   padding: 10px 12px;
@@ -986,19 +846,16 @@ textarea {
   color: #0277BD;
   cursor: pointer;
 }
-
 .substep-btn.active {
   background: linear-gradient(135deg, #29B6F6, #0288D1);
   color: #FFF;
   border-color: #01579B;
 }
-
 .dialogue-list {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-
 .dialogue-item {
   display: flex;
   gap: 12px;
@@ -1008,24 +865,20 @@ textarea {
   border-radius: 20px;
   padding: 14px;
 }
-
 .dialogue-item.speaker-right {
   background: #FFFDF0;
   border-color: #FFD54F;
 }
-
 .dialogue-item.solved {
   border-color: #66BB6A;
   background: #F1F8E9;
 }
-
 .speaker-avatar-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 60px;
 }
-
 .speaker-emoji {
   width: 48px;
   height: 48px;
@@ -1037,7 +890,6 @@ textarea {
   justify-content: center;
   font-size: 1.65rem;
 }
-
 .speaker-name {
   font-size: 0.78rem;
   font-weight: 900;
@@ -1045,12 +897,10 @@ textarea {
   margin-top: 4px;
   text-align: center;
 }
-
 .dialogue-content {
   flex: 1;
   min-width: 0;
 }
-
 .dialogue-en-line {
   font-size: 1.18rem;
   font-weight: 900;
@@ -1061,14 +911,12 @@ textarea {
   flex-wrap: wrap;
   gap: 3px;
 }
-
 .dialogue-vi-line {
   font-size: 0.92rem;
   font-weight: 800;
   color: var(--text-muted);
   margin-bottom: 8px;
 }
-
 .dialogue-blank-slot {
   display: inline-flex;
   align-items: center;
@@ -1083,7 +931,6 @@ textarea {
   color: #E65100;
   font-weight: 900;
 }
-
 .blank-choices-row {
   display: flex;
   flex-wrap: wrap;
@@ -1091,13 +938,11 @@ textarea {
   gap: 8px;
   margin-top: 6px;
 }
-
 .blank-prompt-label {
   font-size: 0.84rem;
   font-weight: 900;
   color: #E65100;
 }
-
 .blank-choice-btn {
   min-height: 42px;
   padding: 6px 14px;
@@ -1110,20 +955,17 @@ textarea {
   color: #0D47A1;
   cursor: pointer;
 }
-
 .blank-choice-btn.wrong-choice {
   background: #FFCDD2;
   border-color: #D32F2F;
   color: #B71C1C;
   animation: shakeHorizontal 0.35s ease;
 }
-
 .solved-blank-note {
   font-size: 0.88rem;
   font-weight: 900;
   color: #1B5E20;
 }
-
 .roleplay-selector-bar {
   background: #FFF8E1;
   border: 2.5px solid #FFD54F;
@@ -1136,13 +978,11 @@ textarea {
   flex-wrap: wrap;
   gap: 10px;
 }
-
 .role-buttons-group {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
-
 .role-choice-btn {
   padding: 7px 14px;
   border-radius: 12px;
@@ -1152,13 +992,11 @@ textarea {
   font-size: 0.92rem;
   cursor: pointer;
 }
-
 .role-choice-btn.active {
   background: #FF7043;
   color: #FFF;
   border-color: #D84315;
 }
-
 .mic-action-row {
   display: flex;
   align-items: center;
@@ -1166,7 +1004,6 @@ textarea {
   flex-wrap: wrap;
   margin-top: 8px;
 }
-
 .btn-mic-record {
   background: linear-gradient(135deg, #EC407A, #C2185B);
   color: #FFF;
@@ -1179,12 +1016,10 @@ textarea {
   cursor: pointer;
   min-height: 44px;
 }
-
 .btn-mic-record.listening {
   background: linear-gradient(135deg, #E53935, #B71C1C);
   animation: pulseMic 1.1s infinite;
 }
-
 .pronunciation-result-box {
   margin-top: 10px;
   padding: 10px 12px;
@@ -1192,7 +1027,6 @@ textarea {
   background: #FFFFFF;
   border: 2px solid #81C784;
 }
-
 .scored-word-chip {
   display: inline-block;
   padding: 2px 8px;
@@ -1201,20 +1035,14 @@ textarea {
   font-weight: 900;
   font-size: 0.95rem;
 }
-
 .scored-word-chip.good {
   background: #C8E6C9;
   color: #1B5E20;
 }
-
 .scored-word-chip.retry {
   background: #FFE0B2;
   color: #E65100;
 }
-
-/* ==========================================================================
-   CHẶNG 3: THỬ THÁCH PHẢN XẠ 10 CÂU
-   ========================================================================== */
 .quiz-progress-bar-wrap {
   width: 100%;
   height: 12px;
@@ -1223,14 +1051,12 @@ textarea {
   overflow: hidden;
   margin-bottom: 16px;
 }
-
 .quiz-progress-bar-fill {
   height: 100%;
   background: linear-gradient(90deg, #FFB300, #FF7043);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
-
 .quiz-prompt-card {
   background: linear-gradient(180deg, #F8FDFF 0%, #E1F5FE 100%);
   border: 3px solid #64B5F6;
@@ -1239,7 +1065,6 @@ textarea {
   text-align: center;
   margin-bottom: 16px;
 }
-
 .quiz-type-badge {
   display: inline-block;
   background: #0288D1;
@@ -1250,13 +1075,11 @@ textarea {
   border-radius: 999px;
   margin-bottom: 6px;
 }
-
 .quiz-options-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
-
 .quiz-option-btn {
   min-height: 62px;
   padding: 12px 14px;
@@ -1273,19 +1096,16 @@ textarea {
   justify-content: center;
   gap: 10px;
 }
-
 .quiz-option-btn.correct {
   background: #C8E6C9;
   border-color: #2E7D32;
   color: #1B5E20;
 }
-
 .quiz-option-btn.wrong {
   background: #FFCDD2;
   border-color: #C62828;
   color: #B71C1C;
 }
-
 .sentence-answer-zone {
   min-height: 66px;
   background: #FFFFFF;
@@ -1299,7 +1119,6 @@ textarea {
   gap: 8px;
   margin-bottom: 14px;
 }
-
 .word-order-chip {
   min-height: 44px;
   padding: 8px 14px;
@@ -1312,10 +1131,6 @@ textarea {
   color: #E65100;
   cursor: pointer;
 }
-
-/* ==========================================================================
-   CHẶNG 4: KHU VƯỜN 6 TRÒ CHƠI TIẾNG ANH (GAMES HUB)
-   ========================================================================== */
 .games-header-banner {
   display: flex;
   align-items: center;
@@ -1324,25 +1139,21 @@ textarea {
   gap: 10px;
   margin-bottom: 14px;
 }
-
 .games-hub-title {
   font-size: 1.35rem;
   font-weight: 900;
   color: #4A148C;
 }
-
 .games-hub-sub {
   font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-muted);
 }
-
 .games-mini-stats {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
 }
-
 .g-stat-chip {
   background: #FFF8E1;
   border: 2px solid #FFD54F;
@@ -1352,14 +1163,12 @@ textarea {
   font-weight: 800;
   color: #E65100;
 }
-
 .games-selector-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 8px;
   margin-bottom: 16px;
 }
-
 .game-tab-pill {
   background: #F8FAFC;
   border: 2.5px solid #CBD5E1;
@@ -1374,22 +1183,18 @@ textarea {
   cursor: pointer;
   min-height: 64px;
 }
-
 .game-tab-pill.active {
   background: linear-gradient(135deg, #7E57C2, #5E35B1);
   color: #FFFFFF;
   border-color: #311B92;
 }
-
 .game-tab-icon {
   font-size: 1.5rem;
 }
-
 .game-tab-label {
   font-size: 0.8rem;
   font-weight: 900;
 }
-
 .game-instruction-bar {
   background: #FFFDE7;
   border: 2px solid #FFE082;
@@ -1400,14 +1205,12 @@ textarea {
   color: #3E2723;
   margin-bottom: 14px;
 }
-
 .game-question-panel {
   background: #F8FDFF;
   border: 3px solid #81D4FA;
   border-radius: 20px;
   padding: 14px;
 }
-
 .game-q-badge {
   background: #E1F5FE;
   color: #01579B;
@@ -1417,7 +1220,6 @@ textarea {
   border-radius: 12px;
   margin-bottom: 10px;
 }
-
 .learning-spotlight-box {
   background: #FFFFFF;
   border: 3px solid #FFD54F;
@@ -1426,25 +1228,21 @@ textarea {
   text-align: center;
   margin-bottom: 12px;
 }
-
 .spotlight-meaning {
   font-size: 1.35rem;
   font-weight: 900;
   color: #0D47A1;
 }
-
 .spotlight-sub {
   font-size: 0.86rem;
   font-weight: 800;
   color: var(--text-muted);
 }
-
 .game-choices-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
-
 .game-answer-btn {
   min-height: 54px;
   background: #FFFFFF;
@@ -1461,55 +1259,304 @@ textarea {
   justify-content: center;
   gap: 8px;
 }
-
-/* Game 1: Nông Trại Vui Vẻ */
-.farm-plots-grid {
+.farm-crops-bar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
-
-.farm-plot-card {
-  background: linear-gradient(180deg, #F1F8E9 0%, #DCEDC8 100%);
-  border: 3px solid #81C784;
-  border-bottom-width: 5px;
-  border-radius: 18px;
-  padding: 10px 8px;
-  text-align: center;
+.farm-mini-tab {
+  background: #F1F8E9;
+  border: 2.5px solid #A5D6A7;
+  border-bottom-width: 4px;
+  border-radius: 14px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   cursor: pointer;
+  text-align: left;
 }
-
-.farm-plot-card.selected {
-  border-color: #FF8F00;
+.farm-mini-tab.selected {
   background: #FFF8E1;
-  box-shadow: 0 0 0 3px rgba(255, 143, 0, 0.25);
+  border-color: #FF8F00;
+  box-shadow: 0 0 0 2px rgba(255, 143, 0, 0.25);
 }
-
-.farm-plot-card.ready-harvest {
-  background: linear-gradient(180deg, #FFF9C4 0%, #FFE082 100%);
+.farm-mini-tab.ready-harvest {
+  background: #FFF9C4;
   border-color: #F57F17;
-  animation: bouncePop 0.9s infinite alternate;
 }
-
-.farm-plot-emoji {
-  font-size: 2.3rem;
+.f-mini-icon {
+  font-size: 1.65rem;
 }
-
-.farm-plot-name {
+.f-mini-name {
   font-size: 0.84rem;
   font-weight: 900;
   color: #1B5E20;
+  line-height: 1.15;
 }
-
-.farm-plot-progress {
-  font-size: 0.76rem;
-  font-weight: 900;
+.f-mini-cm {
+  font-size: 0.74rem;
+  font-weight: 800;
   color: #E65100;
-  margin-top: 2px;
 }
-
-/* Game 2: Đào Vàng Tiếng Anh */
+.farm-realistic-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.plant-simulator-card {
+  background: #FFFFFF;
+  border: 3px solid #81C784;
+  border-radius: 22px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.plant-sim-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.plant-crop-badge {
+  background: #E8F5E9;
+  color: #1B5E20;
+  font-weight: 900;
+  font-size: 0.88rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.plant-height-badge {
+  background: #FFF3E0;
+  color: #E65100;
+  font-weight: 900;
+  font-size: 0.86rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid #FFB74D;
+}
+.plant-svg-stage-wrap {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #B3E5FC;
+  background: #E1F5FE;
+}
+.plant-scene-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.svg-crawling-bug {
+  animation: crawlBugAnim 1.2s infinite alternate ease-in-out;
+}
+.svg-ripe-fruit {
+  animation: bouncePop 1.4s infinite alternate ease-in-out;
+}
+.plant-lifecycle-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-top: 8px;
+}
+.lc-step {
+  background: #F1F5F9;
+  color: #64748B;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-align: center;
+  padding: 4px 2px;
+  border-radius: 8px;
+}
+.lc-step.done {
+  background: #C8E6C9;
+  color: #1B5E20;
+}
+.plant-care-panel {
+  background: #F8FDFF;
+  border: 3px solid #81D4FA;
+  border-radius: 22px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.care-task-alert {
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-weight: 900;
+  font-size: 0.92rem;
+  margin-bottom: 10px;
+}
+.care-task-alert.water-alert {
+  background: #E1F5FE;
+  border: 2px solid #29B6F6;
+  color: #01579B;
+}
+.care-task-alert.bug-alert {
+  background: #FFF3E0;
+  border: 2px solid #FF7043;
+  color: #BF360C;
+}
+.fishing-mission-bar {
+  background: linear-gradient(90deg, #FFF8E1 0%, #E1F5FE 100%);
+  border: 3px solid #FFB300;
+  border-radius: 18px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.f-mission-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.f-mission-tag {
+  background: #E65100;
+  color: #FFFFFF;
+  font-weight: 900;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.f-mission-meaning {
+  font-size: 1.32rem;
+  font-weight: 900;
+  color: #0D47A1;
+}
+.real-lake-fishing-stage {
+  position: relative;
+  width: 100%;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 3.5px solid #0288D1;
+  background: #0277BD;
+  box-shadow: 0 8px 20px rgba(1, 87, 155, 0.2);
+}
+.lake-background-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-height: 290px;
+}
+.wooden-boat-group {
+  animation: boatBobbing 2.8s infinite ease-in-out;
+}
+.angler-rod-arm {
+  transform-origin: 106px 90px;
+  transition: transform 0.25s ease;
+}
+.angler-rod-arm.rod-cast-forward {
+  transform: rotate(10deg);
+}
+.lake-fishes-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 8px 14px;
+  align-items: center;
+}
+.real-fish-actor {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
+  animation: fishSwimFloat 3.2s infinite alternate ease-in-out;
+}
+.real-fish-actor.lane-pos-1,
+.real-fish-actor.lane-pos-3 {
+  animation-delay: -1.4s;
+}
+.real-fish-actor:hover {
+  transform: scale(1.06);
+}
+.real-fish-actor.fish-flying-to-boat {
+  transform: translate(-80px, -135px) rotate(-35deg) scale(1.15);
+}
+.real-fish-actor.fish-scared-away {
+  transform: translateX(65px) scale(0.85);
+  opacity: 0.45;
+}
+.fish-word-tag {
+  background: rgba(255, 255, 255, 0.96);
+  border: 2.5px solid #FFD54F;
+  border-radius: 14px;
+  padding: 3px 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  margin-bottom: -4px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.f-word-main {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0D47A1;
+}
+.f-word-ipa {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #546E7A;
+}
+.real-fish-svg {
+  width: 96px;
+  height: 54px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+}
+.fish-tail-fin {
+  transform-origin: 72px 26px;
+  animation: tailWag 0.55s infinite alternate ease-in-out;
+}
+.fishing-footer-tip {
+  margin-top: 10px;
+  background: #E1F5FE;
+  border: 2px solid #81D4FA;
+  border-radius: 14px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #01579B;
+  text-align: center;
+}
+.gold-nugget-btn.wrong-shake {
+  background: #FFCDD2;
+  animation: shakeHorizontal 0.35s ease;
+}
+@keyframes crawlBugAnim {
+  0% { transform: translate(144px, 95px) scaleX(1); }
+  100% { transform: translate(156px, 93px) scaleX(0.92); }
+}
+@keyframes boatBobbing {
+  0%, 100% { transform: translateY(0px) rotate(-0.8deg); }
+  50% { transform: translateY(4px) rotate(1deg); }
+}
+@keyframes fishSwimFloat {
+  0% { transform: translateX(-8px) translateY(0px); }
+  100% { transform: translateX(10px) translateY(-5px); }
+}
+@keyframes tailWag {
+  0% { transform: scaleX(1) skewY(-6deg); }
+  100% { transform: scaleX(0.82) skewY(6deg); }
+}
 .gold-mine-scene {
   background: linear-gradient(180deg, #FFF8E1 0%, #8D6E63 32%, #4E342E 100%);
   border: 3.5px solid #FFB300;
@@ -1517,7 +1564,6 @@ textarea {
   padding: 14px;
   color: #FFF;
 }
-
 .gold-miner-top {
   display: flex;
   align-items: center;
@@ -1529,18 +1575,15 @@ textarea {
   padding: 10px 12px;
   color: var(--text-main);
 }
-
 .miner-avatar-cabin {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .gold-target-sign {
   text-align: right;
   flex: 1;
 }
-
 .miner-claw-Pivot {
   height: 52px;
   display: flex;
@@ -1548,7 +1591,6 @@ textarea {
   align-items: flex-start;
   overflow: hidden;
 }
-
 .miner-claw-rope {
   width: 3px;
   height: 36px;
@@ -1557,21 +1599,18 @@ textarea {
   transform-origin: top center;
   animation: swingClaw 2.2s infinite ease-in-out;
 }
-
 .claw-hook-icon {
   position: absolute;
   bottom: -18px;
   left: -12px;
   font-size: 1.5rem;
 }
-
 .underground-nuggets-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-top: 8px;
 }
-
 .gold-nugget-btn {
   background: linear-gradient(135deg, #FFF59D, #FFB300);
   border: 3px solid #FFE082;
@@ -1583,28 +1622,23 @@ textarea {
   color: #3E2723;
   transition: transform 0.2s ease;
 }
-
 .gold-nugget-btn.reeling-up {
   transform: translateY(-30px) scale(1.1);
   background: #C8E6C9;
 }
-
 .nugget-treasure-icon {
   font-size: 1.9rem;
 }
-
 .nugget-word-text {
   font-size: 1.2rem;
   font-weight: 900;
   color: #B71C1C;
 }
-
 .nugget-ipa-text {
   font-size: 0.78rem;
   font-weight: 800;
   color: #4E342E;
 }
-
 .nugget-value-tag {
   display: inline-block;
   background: rgba(255, 255, 255, 0.85);
@@ -1614,8 +1648,6 @@ textarea {
   font-weight: 900;
   margin-top: 3px;
 }
-
-/* Game 3: Pháo Sao Bắn Từ */
 .shooter-sky-arena {
   background: linear-gradient(180deg, #1A237E 0%, #283593 60%, #3949AB 100%);
   border: 3.5px solid #7986CB;
@@ -1623,7 +1655,6 @@ textarea {
   padding: 14px;
   color: #FFF;
 }
-
 .shooter-mission-hud {
   background: rgba(255, 255, 255, 0.14);
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -1636,14 +1667,12 @@ textarea {
   gap: 10px;
   margin-bottom: 14px;
 }
-
 .shooter-targets-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin-bottom: 14px;
 }
-
 .floating-target-card {
   background: linear-gradient(180deg, #FFFFFF 0%, #E3F2FD 100%);
   border: 3px solid #4FC3F7;
@@ -1655,34 +1684,28 @@ textarea {
   position: relative;
   color: #0D47A1;
 }
-
 .floating-target-card.exploded {
   background: #FFE082;
   transform: scale(1.12);
 }
-
 .target-crosshair {
   position: absolute;
   top: 6px;
   right: 8px;
   font-size: 1rem;
 }
-
 .target-fly-icon {
   font-size: 2rem;
 }
-
 .target-word-label {
   font-size: 1.22rem;
   font-weight: 900;
 }
-
 .target-ipa-label {
   font-size: 0.8rem;
   font-weight: 800;
   color: #546E7A;
 }
-
 .star-cannon-dock {
   text-align: center;
   background: rgba(0, 0, 0, 0.28);
@@ -1691,15 +1714,12 @@ textarea {
   font-weight: 900;
   color: #FFE082;
 }
-
-/* Game 4: Cờ Vua Hiệp Sĩ 4x4 */
 .chess-quest-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 16px;
   align-items: center;
 }
-
 .chess-board-wrapper {
   background: #3E2723;
   border: 4px solid #8D6E63;
@@ -1707,7 +1727,6 @@ textarea {
   padding: 10px;
   color: #FFF;
 }
-
 .chess-status-top {
   display: flex;
   justify-content: space-between;
@@ -1716,7 +1735,6 @@ textarea {
   color: #FFE082;
   margin-bottom: 8px;
 }
-
 .chess-board-4x4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1725,7 +1743,6 @@ textarea {
   border-radius: 10px;
   overflow: hidden;
 }
-
 .chess-cell {
   position: relative;
   display: flex;
@@ -1733,22 +1750,18 @@ textarea {
   justify-content: center;
   font-size: 1.85rem;
 }
-
 .chess-cell.light {
   background: #FFF8E1;
   color: #3E2723;
 }
-
 .chess-cell.dark {
   background: #A1887F;
   color: #FFFFFF;
 }
-
 .chess-cell.target-glow {
   box-shadow: inset 0 0 0 4px #FF6F00;
   background: #FFE082;
 }
-
 .chess-coord {
   position: absolute;
   top: 2px;
@@ -1757,7 +1770,6 @@ textarea {
   font-weight: 900;
   opacity: 0.65;
 }
-
 .chess-english-tip {
   margin-top: 8px;
   background: #FFF8E1;
@@ -1768,14 +1780,11 @@ textarea {
   font-weight: 800;
   text-align: center;
 }
-
-/* Game 5: Kẹo Ngọt Candy Match */
 .candy-grid-12 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
-
 .candy-tile-card {
   background: linear-gradient(180deg, #FFFFFF 0%, #FCE4EC 100%);
   border: 3px solid #F48FB1;
@@ -1790,49 +1799,40 @@ textarea {
   align-items: center;
   justify-content: center;
 }
-
 .candy-tile-card.vi {
   background: linear-gradient(180deg, #FFFFFF 0%, #E1F5FE 100%);
   border-color: #81D4FA;
 }
-
 .candy-tile-card.selected {
   border-color: #FF6F00;
   background: #FFF8E1;
   transform: scale(1.04);
 }
-
 .candy-tile-card.matched {
   opacity: 0.25;
   background: #C8E6C9;
   border-color: #4CAF50;
 }
-
 .candy-top-icon {
   font-size: 1.55rem;
 }
-
 .candy-main-text {
   font-size: 1.02rem;
   font-weight: 900;
   color: #1E293B;
   line-height: 1.2;
 }
-
 .candy-sub-text {
   font-size: 0.72rem;
   font-weight: 800;
   color: #64748B;
 }
-
-/* Game 6: Câu Cá Đại Dương */
 .fishing-ocean-scene {
   background: linear-gradient(180deg, #E1F5FE 0%, #29B6F6 35%, #0277BD 100%);
   border: 3.5px solid #4FC3F7;
   border-radius: 22px;
   padding: 14px;
 }
-
 .fishing-boat-top {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
@@ -1844,24 +1844,20 @@ textarea {
   gap: 10px;
   margin-bottom: 12px;
 }
-
 .boat-character {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .fishing-bait-board {
   text-align: right;
   flex: 1;
 }
-
 .ocean-water-zone {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
-
 .swimming-fish-btn {
   background: rgba(255, 255, 255, 0.94);
   border: 3px solid #81D4FA;
@@ -1874,31 +1870,23 @@ textarea {
   cursor: pointer;
   text-align: left;
 }
-
 .swimming-fish-btn.hooked {
   background: #C8E6C9;
   transform: translateY(-22px);
 }
-
 .fish-creature-emoji {
   font-size: 2.2rem;
 }
-
 .fish-en-word {
   font-size: 1.2rem;
   font-weight: 900;
   color: #0D47A1;
 }
-
 .fish-ipa-word {
   font-size: 0.78rem;
   font-weight: 800;
   color: #546E7A;
 }
-
-/* ==========================================================================
-   BANNER KHEN NGỢI NỔI BẬT (FLOATING PRAISE TOAST)
-   ========================================================================== */
 .praise-floating-toast {
   position: fixed;
   top: 14px;
@@ -1915,22 +1903,18 @@ textarea {
   transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
   pointer-events: none;
 }
-
 .praise-floating-toast.show {
   transform: translate(-50%, 0);
 }
-
 .praise-toast-inner {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .praise-icon-bounce {
   font-size: 2.3rem;
   animation: bouncePop 0.5s ease;
 }
-
 .praise-top-row {
   display: flex;
   align-items: center;
@@ -1938,13 +1922,11 @@ textarea {
   gap: 6px;
   margin-bottom: 2px;
 }
-
 .praise-en-tag {
   font-size: 0.82rem;
   font-weight: 900;
   color: #0D47A1;
 }
-
 .praise-star-tag {
   background: #FFD54F;
   color: #B71C1C;
@@ -1953,7 +1935,6 @@ textarea {
   padding: 2px 8px;
   border-radius: 999px;
 }
-
 .praise-combo-pill {
   background: #FF7043;
   color: #FFFFFF;
@@ -1962,17 +1943,12 @@ textarea {
   padding: 2px 8px;
   border-radius: 999px;
 }
-
 .praise-vi-main {
   font-size: 1.02rem;
   font-weight: 900;
   color: #1B5E20;
   line-height: 1.25;
 }
-
-/* ==========================================================================
-   MODALS & LỘ TRÌNH HỌC ĐÃ LƯU
-   ========================================================================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -1987,12 +1963,10 @@ textarea {
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
-
 .modal-backdrop.open {
   opacity: 1;
   pointer-events: auto;
 }
-
 .modal-card {
   background: #FFFFFF;
   border-radius: 26px;
@@ -2005,7 +1979,6 @@ textarea {
   max-height: 90vh;
   overflow-y: auto;
 }
-
 .modal-close-btn {
   position: absolute;
   top: 12px;
@@ -2019,12 +1992,10 @@ textarea {
   font-weight: 900;
   cursor: pointer;
 }
-
 .dict-popup-header {
   text-align: center;
   margin-bottom: 14px;
 }
-
 .dict-emoji-circle {
   width: 84px;
   height: 84px;
@@ -2036,18 +2007,15 @@ textarea {
   align-items: center;
   justify-content: center;
 }
-
 .dict-emoji-circle img {
   width: 56px;
   height: 56px;
 }
-
 .dict-word-title {
   font-size: 2rem;
   font-weight: 900;
   color: #0D47A1;
 }
-
 .dict-meta-badges {
   display: flex;
   justify-content: center;
@@ -2055,7 +2023,6 @@ textarea {
   flex-wrap: wrap;
   margin-top: 6px;
 }
-
 .dict-ipa-badge {
   background: #ECEFF1;
   color: #37474F;
@@ -2064,7 +2031,6 @@ textarea {
   border-radius: 999px;
   font-size: 1rem;
 }
-
 .dict-pos-badge {
   background: #FFE082;
   color: #E65100;
@@ -2073,7 +2039,6 @@ textarea {
   border-radius: 999px;
   font-size: 0.95rem;
 }
-
 .dict-meaning-box {
   background: #F1F8E9;
   border: 3px solid #81C784;
@@ -2082,21 +2047,18 @@ textarea {
   text-align: center;
   margin: 14px 0 16px;
 }
-
 .dict-meaning-label {
   font-size: 0.8rem;
   font-weight: 900;
   color: #2E7D32;
   text-transform: uppercase;
 }
-
 .dict-meaning-text {
   font-size: 1.35rem;
   font-weight: 900;
   color: #1B5E20;
   margin-top: 3px;
 }
-
 .roadmap-unit-row {
   background: #F8FAFC;
   border: 2px solid #CBD5E1;
@@ -2110,18 +2072,15 @@ textarea {
   text-align: left;
   font-size: 0.9rem;
 }
-
 .roadmap-unit-row.done {
   background: #F1F8E9;
   border-color: #81C784;
 }
-
 .roadmap-unit-row.current {
   background: #FFF8E1;
   border-color: #FFB300;
   border-width: 2.5px;
 }
-
 .roadmap-status-tag {
   font-size: 0.76rem;
   font-weight: 900;
@@ -2130,18 +2089,15 @@ textarea {
   background: #FFFFFF;
   white-space: nowrap;
 }
-
 .form-group {
   margin-bottom: 14px;
 }
-
 .form-label {
   display: block;
   font-weight: 900;
   font-size: 0.94rem;
   margin-bottom: 5px;
 }
-
 .form-input,
 .form-select {
   width: 100%;
@@ -2152,7 +2108,6 @@ textarea {
   font-size: 0.96rem;
   font-weight: 800;
 }
-
 .guide-steps-box {
   background: #FFFDE7;
   border: 2px solid #FFE082;
@@ -2161,18 +2116,15 @@ textarea {
   margin-top: 14px;
   font-size: 0.9rem;
 }
-
 .guide-steps-box ol {
   padding-left: 18px;
   margin-top: 6px;
 }
-
 .badges-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
   gap: 10px;
 }
-
 .badge-item-card {
   background: #FFFDF5;
   border: 2.5px solid #FFE082;
@@ -2180,23 +2132,19 @@ textarea {
   padding: 10px;
   text-align: center;
 }
-
 .badge-item-emoji {
   font-size: 2.1rem;
 }
-
 .badge-item-name {
   font-weight: 900;
   font-size: 0.88rem;
   color: #E65100;
 }
-
 .badge-item-date {
   font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 700;
 }
-
 .feedback-banner {
   margin-top: 14px;
   padding: 12px 16px;
@@ -2209,99 +2157,97 @@ textarea {
   flex-wrap: wrap;
   gap: 10px;
 }
-
 .feedback-banner.success {
   background: #E8F5E9;
   border: 3px solid #4CAF50;
   color: #1B5E20;
 }
-
 .feedback-banner.retry {
   background: #FFF3E0;
   border: 3px solid #FFA000;
   color: #E65100;
 }
-
 @keyframes bouncePop {
   0% { transform: scale(0.82); }
   50% { transform: scale(1.12); }
   100% { transform: scale(1); }
 }
-
 @keyframes shakeHorizontal {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-6px); }
   75% { transform: translateX(6px); }
 }
-
 @keyframes pulseMic {
   0% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0.55); }
   70% { box-shadow: 0 0 0 14px rgba(229, 57, 53, 0); }
   100% { box-shadow: 0 0 0 0 rgba(229, 57, 53, 0); }
 }
-
 @keyframes swingClaw {
   0% { transform: rotate(-28deg); }
   50% { transform: rotate(28deg); }
   100% { transform: rotate(-28deg); }
 }
-
-/* ==========================================================================
-   TỐI ƯU CHUYÊN BIỆT CHO IPHONE 11 PRO MAX (414 x 896 px) & ĐIỆN THOẠI
-   ========================================================================== */
 @media (max-width: 860px) {
   .stage1-layout {
+    grid-template-columns: 1fr;
+  }
+  .farm-realistic-layout {
     grid-template-columns: 1fr;
   }
   .chess-quest-layout {
     grid-template-columns: 1fr;
   }
 }
-
 @media (max-width: 540px) {
+  .farm-crops-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lake-fishes-overlay {
+    top: 38%;
+    gap: 6px;
+    padding: 6px 8px;
+  }
+  .real-fish-svg {
+    width: 78px;
+    height: 44px;
+  }
+  .f-word-main {
+    font-size: 1rem;
+  }
   .top-header {
     padding: 8px 10px;
   }
-
-  .header-inner {
+.header-inner {
     gap: 6px;
   }
-
-  .avatar-badge {
+.avatar-badge {
     width: 38px;
     height: 38px;
     font-size: 20px;
   }
-
-  .brand-text h1 {
+.brand-text h1 {
     font-size: 1.05rem;
   }
-
-  .brand-text p {
+.brand-text p {
     font-size: 0.72rem;
   }
-
-  .daily-timer-box {
+.daily-timer-box {
     min-width: 140px;
     padding: 4px 10px;
     gap: 6px;
   }
-
-  .timer-icon {
+.timer-icon {
     font-size: 1rem;
   }
-
-  .timer-label-row {
+.timer-label-row {
     font-size: 0.72rem;
   }
-
-  .header-stats {
+.header-stats {
     width: 100%;
     justify-content: space-between;
     gap: 4px;
   }
-
-  .stat-pill {
+.stat-pill {
     padding: 4px 8px;
     font-size: 0.78rem;
     min-height: 34px;
@@ -2309,128 +2255,101 @@ textarea {
     justify-content: center;
     white-space: nowrap;
   }
-
-  .app-container {
+.app-container {
     margin-top: 8px;
     padding: 0 8px;
   }
-
-  .resume-progress-banner {
+.resume-progress-banner {
     padding: 8px 10px;
     margin-bottom: 8px;
   }
-
-  .resume-banner-left {
+.resume-banner-left {
     font-size: 0.82rem;
   }
-
-  .curriculum-bar {
+.curriculum-bar {
     padding: 10px;
     gap: 8px;
     margin-bottom: 10px;
   }
-
-  .unit-select {
+.unit-select {
     min-width: 100%;
     font-size: 0.92rem;
     min-height: 42px;
   }
-
-  .ai-create-btn {
+.ai-create-btn {
     width: 100%;
     min-height: 42px;
     font-size: 0.92rem;
   }
-
-  /* 4 Chặng xếp dạng Lưới 2x2 gọn đẹp trên màn hình iPhone 11 Pro Max (414px) */
-  .stages-nav {
+.stages-nav {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin-bottom: 12px;
   }
-
-  .stage-tab {
+.stage-tab {
     padding: 8px 10px;
     min-height: 58px;
     gap: 8px;
   }
-
-  .stage-icon-circle {
+.stage-icon-circle {
     width: 36px;
     height: 36px;
     font-size: 1.25rem;
     border-radius: 10px;
   }
-
-  .stage-title {
+.stage-title {
     font-size: 0.88rem;
   }
-
-  .stage-subtitle {
+.stage-subtitle {
     font-size: 0.72rem;
   }
-
-  .stage-card {
+.stage-card {
     padding: 14px 12px;
     border-radius: 20px;
   }
-
-  .stage-header-title h2 {
+.stage-header-title h2 {
     font-size: 1.15rem;
   }
-
-  /* Làm nổi bật thẻ học tập trên iPhone 11 Pro Max */
-  .visual-card {
+.visual-card {
     padding: 12px;
   }
-
-  .visual-art-frame {
+.visual-art-frame {
     width: 120px;
     height: 120px;
   }
-
-  .visual-svg-img {
+.visual-svg-img {
     width: 88px;
     height: 88px;
   }
-
-  .visual-meaning-vi {
+.visual-meaning-vi {
     font-size: 1.3rem;
   }
-
-  /* Ô chữ và thẻ chữ vừa khít ngón tay trên màn hình rộng 414px */
-  .letter-slots-container {
+.letter-slots-container {
     gap: 5px;
     margin: 12px 0;
   }
-
-  .letter-slot {
+.letter-slot {
     width: 38px;
     height: 46px;
     font-size: 1.4rem;
     border-radius: 10px;
   }
-
-  .letter-bank-container {
+.letter-bank-container {
     gap: 6px;
   }
-
-  .letter-tile-btn {
+.letter-tile-btn {
     width: 44px;
     height: 48px;
     font-size: 1.45rem;
     border-radius: 12px;
   }
-
-  .games-selector-grid {
+.games-selector-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .candy-grid-12 {
+.candy-grid-12 {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .quiz-options-grid {
+.quiz-options-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -2712,20 +2631,9 @@ textarea {
   </div>
 
   <!-- Scripts -->
-<script>
+  <script>
 
-/* === js\dictionary.js === */
-/**
- * js/dictionary.js
- * Hệ thống Từ điển chạm (Tap-to-Translate) toàn cục cho Gia Khiêm (Lớp 2)
- * Tuân thủ AGENT_RULES.md Mục 3:
- * Mọi từ tiếng Anh khi bấm vào đều hiển thị:
- * 1. Từ gốc (Word)
- * 2. Phiên âm IPA
- * 3. Loại từ (Danh từ, Động từ, Tính từ...)
- * 4. Nghĩa tiếng Việt dễ hiểu cho trẻ em
- * 5. Nút nghe phát âm (0.85x)
- */
+
 
 window.GKDictionary = (function () {
   // Kho từ điển nền tảng bao phủ Family and Friends 2 (Starter -> Unit 15) + từ vựng giao tiếp & ngữ pháp
@@ -3358,10 +3266,7 @@ window.GKDictionary = (function () {
     };
   }
 
-  /**
-   * Biến một chuỗi câu tiếng Anh thành HTML mà MỌI TỪ đều bấm vào được (Tap-to-Translate)
-   * Giữ nguyên dấu câu và khoảng trắng tự nhiên.
-   */
+  
   function renderTappableText(sentence, options = {}) {
     if (!sentence) return "";
     const extraClass = options.className || "";
@@ -3405,18 +3310,10 @@ window.GKDictionary = (function () {
 })();
 
 
-/* === js\seedData.js === */
-/**
- * js/seedData.js
- * Kho dữ liệu nền tảng (Seed Data) bám sát giáo trình Oxford Family and Friends 2
- * Từ Starter Unit đến Unit 7 (và mở rộng sẵn Unit 8, 9, 10) dành cho bé Gia Khiêm (Lớp 2).
- * Kết hợp thư viện hình ảnh Fluent Emoji / Twemoji SVG chất lượng cao + Minh họa hoạt hình.
- */
+
 
 window.GKSeedData = (function () {
-  /**
-   * Chuyển đổi Emoji sang mã hex để tải SVG sắc nét từ CDN Twemoji / Fluent SVG
-   */
+  
   function emojiToCodePoint(emoji) {
     if (!emoji) return "1f31f";
     const points = [];
@@ -3435,9 +3332,7 @@ window.GKSeedData = (function () {
     return `https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${code}.svg`;
   }
 
-  /**
-   * Tạo URL minh họa hoạt hình an toàn cho trẻ em (Kids Cartoon Vector Style)
-   */
+  
   function getCartoonIllustrationUrl(word, meaning) {
     const clean = encodeURIComponent(`cute flat vector children book illustration of ${word}, bright pastel colors, simple, white background, kid friendly, no text`);
     return `https://image.pollinations.ai/prompt/${clean}?width=400&height=400&nologo=true&seed=${word.length * 17}`;
@@ -3983,13 +3878,7 @@ window.GKSeedData = (function () {
     { id: "life-space", label: "🪐 Chủ đề đời sống: Khám phá Vũ trụ, Tên lửa & Khủng long", promptTopic: "Everyday Life Topic for 2nd Grader: Space, Rockets, Planets and Friendly Dinosaurs" }
   ];
 
-  /**
-   * Tự động tạo bộ 10 câu hỏi Chặng 3 (Thử thách phản xạ & Tích sao) từ dữ liệu của Unit
-   * Kết hợp đúng 3 dạng theo yêu cầu:
-   * 1. Nhìn hình chọn từ (image_to_word) - 4 câu
-   * 2. Nghe âm chọn nghĩa (audio_to_meaning) - 3 câu
-   * 3. Sắp xếp câu ngắn (sentence_order) - 3 câu
-   */
+  
   function buildStage3Questions(unit) {
     // Nếu unit do AI tạo đã có sẵn đủ 10 câu hợp lệ thì chuẩn hóa và trả về
     const vocab = unit.vocabulary || [];
@@ -4104,12 +3993,7 @@ window.GKSeedData = (function () {
 })();
 
 
-/* === js\storage.js === */
-/**
- * js/storage.js
- * Hệ thống Lưu trữ thông minh (localStorage), Lưu điểm dừng bài học (Auto-Resume Checkpoint),
- * Tiến trình các Unit đã học (Auto-Next Unit), Nông trại vui vẻ & Spaced Repetition (SRS).
- */
+
 
 window.GKStorage = (function () {
   const KEYS = {
@@ -4347,9 +4231,7 @@ window.GKStorage = (function () {
     return Array.isArray(state.completedUnits) && state.completedUnits.includes(unitId);
   }
 
-  /**
-   * Tìm bài học tiếp theo chưa hoàn thành để lần sau mở web bé học tiếp luôn
-   */
+  
   function getNextUnlearnedUnitId(allUnits, afterUnitId) {
     if (!Array.isArray(allUnits) || allUnits.length === 0) return "unit-7";
     const currentIdx = allUnits.findIndex((u) => u.id === (afterUnitId || state.currentUnitId));
@@ -4694,31 +4576,19 @@ window.GKStorage = (function () {
 })();
 
 
-/* === js\speech.js === */
-/**
- * js/speech.js
- * Hệ thống Âm thanh chuẩn Phong cách Kể chuyện Anh Quốc BBC "The Storytellers" (en-GB)
- * & Hệ thống Khen ngợi nhiệt tình cho bé Gia Khiêm (Lớp 2)
- * - Ưu tiên tuyệt đối giọng Anh-Anh (en-GB) ấm áp, truyền cảm như BBC Storytellers ("The Perfect Thing")
- * - Loại bỏ giọng đọc cao, gấp gáp kiểu quảng cáo thương mại
- * - Kết hợp âm thanh người thật chuẩn từ điển Oxford/Cambridge (en-GB MP3) cho từ đơn + Giọng kể chuyện tự nhiên cho câu
- */
+
 
 window.GKSpeech = (function () {
-  const DEFAULT_RATE = 0.85; // Tốc độ kể chuyện rõ ràng cho trẻ 7-8 tuổi
+  const DEFAULT_RATE = 0.85;
   const SLOW_RATE = 0.68;
-  const STORYTELLER_PITCH = 0.96; // Giọng ấm, trầm nhẹ, truyền cảm như người kể chuyện BBC (không chói tai như quảng cáo)
+  const STORYTELLER_PITCH = 0.96; // Giọng trầm ấm, truyền cảm như BBC Storytellers
 
   let preferredVoice = null;
   let availableEnglishVoices = [];
   let activeRecognition = null;
   let audioCtx = null;
-  let humanAudioCache = {}; // { word: mp3Url | null }
-  let currentAudioEl = null;
-  let speakSeqId = 0;
   let comboCount = 0;
 
-  // Danh sách lời khen ngợi đa dạng, ấm áp gọi tên Gia Khiêm
   const PRAISE_MESSAGES = [
     { vi: "🌟 Tuyệt đỉnh luôn Gia Khiêm ơi! Con thông minh quá!", en: "Brilliant job, Gia Khiem!", icon: "🏆" },
     { vi: "👏 Xuất sắc! Gia Khiêm nhớ từ siêu nhanh, xứng đáng 10 điểm!", en: "Well done! You are a superstar!", icon: "🌟" },
@@ -4730,11 +4600,6 @@ window.GKSpeech = (function () {
     { vi: "🎖️ Con làm tốt lắm Gia Khiêm! Nhận thêm sao vàng lấp lánh nào!", en: "Splendid, Gia Khiem!", icon: "🎖️" }
   ];
 
-  /**
-   * Chấm điểm và xếp hạng các giọng đọc trên thiết bị (iPhone 11 Pro Max, iPad, Windows, Android)
-   * Ưu tiên số 1: Giọng Anh-Anh (en-GB) truyền cảm phong cách BBC Storytellers
-   * Loại bỏ các giọng quảng cáo nhanh, gắt
-   */
   function scoreVoiceForStoryteller(v) {
     if (!v || !v.lang) return -999;
     const lang = v.lang.toLowerCase();
@@ -4742,9 +4607,13 @@ window.GKSpeech = (function () {
     if (!lang.startsWith("en")) return -999;
 
     let score = 0;
-
-    // 1. Ưu tiên tuyệt đối giọng Anh Quốc (en-GB) chuẩn BBC Storytellers & Oxford Family and Friends
-    if (lang === "en-gb" || lang === "en_gb" || name.includes("united kingdom") || name.includes("uk") || name.includes("british")) {
+    if (
+      lang === "en-gb" ||
+      lang === "en_gb" ||
+      name.includes("united kingdom") ||
+      name.includes("uk") ||
+      name.includes("british")
+    ) {
       score += 500;
     } else if (lang.startsWith("en-au") || lang.startsWith("en-ie")) {
       score += 200;
@@ -4752,24 +4621,28 @@ window.GKSpeech = (function () {
       score += 100;
     }
 
-    // 2. Các giọng kể chuyện (Storyteller) ấm áp nổi tiếng trên iPhone (iOS) và Windows/Chrome
+    // Ưu tiên giọng localService trên iPhone để phản hồi 0ms không chờ mạng
+    if (v.localService) {
+      score += 40;
+    }
+
     const storytellerKeywords = [
-      { kw: "sonia", bonus: 320 },   // Microsoft Sonia Online (Natural) en-GB - giọng kể chuyện BBC cực ấm
-      { kw: "libby", bonus: 310 },   // Microsoft Libby Online (Natural) en-GB
-      { kw: "maisie", bonus: 300 },  // Microsoft Maisie Online (Natural) en-GB
-      { kw: "ryan", bonus: 290 },    // Microsoft Ryan Online (Natural) en-GB
-      { kw: "martha", bonus: 310 },  // Apple iOS (iPhone 11 Pro Max) en-GB Martha (giọng kể chuyện ấm áp)
-      { kw: "serena", bonus: 305 },  // Apple iOS en-GB Serena
-      { kw: "daniel", bonus: 295 },  // Apple iOS en-GB Daniel (chuẩn BBC)
-      { kw: "arthur", bonus: 290 },  // Apple iOS en-GB Arthur
-      { kw: "kate", bonus: 285 },    // Apple iOS en-GB Kate
-      { kw: "oliver", bonus: 280 },  // Apple iOS en-GB Oliver
-      { kw: "google uk english female", bonus: 285 },
-      { kw: "google uk english male", bonus: 270 },
-      { kw: "hazel", bonus: 230 },   // Microsoft Hazel en-GB
-      { kw: "natural", bonus: 180 },
-      { kw: "premium", bonus: 160 },
-      { kw: "enhanced", bonus: 150 }
+      { kw: "martha", bonus: 330 },  // iOS en-GB Martha (kể chuyện cực ấm trên iPhone 11 Pro Max)
+      { kw: "arthur", bonus: 325 },  // iOS en-GB Arthur
+      { kw: "daniel", bonus: 320 },  // iOS en-GB Daniel (chuẩn BBC)
+      { kw: "serena", bonus: 315 },  // iOS en-GB Serena
+      { kw: "kate", bonus: 310 },    // iOS en-GB Kate
+      { kw: "oliver", bonus: 300 },  // iOS en-GB Oliver
+      { kw: "sonia", bonus: 320 },   // Windows en-GB Sonia
+      { kw: "libby", bonus: 310 },   // Windows en-GB Libby
+      { kw: "maisie", bonus: 300 },  // Windows en-GB Maisie
+      { kw: "ryan", bonus: 290 },    // Windows en-GB Ryan
+      { kw: "google uk english female", bonus: 295 },
+      { kw: "google uk english male", bonus: 280 },
+      { kw: "hazel", bonus: 250 },
+      { kw: "natural", bonus: 150 },
+      { kw: "premium", bonus: 140 },
+      { kw: "enhanced", bonus: 130 }
     ];
 
     for (const item of storytellerKeywords) {
@@ -4778,10 +4651,9 @@ window.GKSpeech = (function () {
       }
     }
 
-    // 3. Trừ điểm các giọng nghe máy móc hoặc giống giọng quảng cáo thương mại
-    const adOrRoboticKeywords = ["novelty", "zarvox", "trinoids", "whisper", "albert", "bad news", "bahh", "bells", "boing", "bubbles", "cellos", "deranged", "Hysterical", "Pipe Organ"];
-    for (const bad of adOrRoboticKeywords) {
-      if (name.includes(bad.toLowerCase())) {
+    const badKeywords = ["novelty", "zarvox", "trinoids", "whisper", "albert", "bad news", "bahh", "bells", "boing", "bubbles", "cellos", "deranged", "hysterical", "pipe organ"];
+    for (const bad of badKeywords) {
+      if (name.includes(bad)) {
         score -= 600;
       }
     }
@@ -4798,10 +4670,10 @@ window.GKSpeech = (function () {
       .filter((v) => v.lang && v.lang.toLowerCase().startsWith("en"))
       .sort((a, b) => scoreVoiceForStoryteller(b) - scoreVoiceForStoryteller(a));
 
-    // Kiểm tra xem người dùng có khóa 1 giọng cụ thể trong cài đặt chưa
-    const savedUri = window.GKStorage && window.GKStorage.getPreferredVoiceUri
-      ? window.GKStorage.getPreferredVoiceUri()
-      : "";
+    const savedUri =
+      window.GKStorage && window.GKStorage.getPreferredVoiceUri
+        ? window.GKStorage.getPreferredVoiceUri()
+        : "";
 
     if (savedUri) {
       const matched = availableEnglishVoices.find(
@@ -4841,59 +4713,7 @@ window.GKSpeech = (function () {
     initVoices();
   }
 
-  /**
-   * Tra cứu âm thanh người thật chuẩn Anh Quốc (Oxford/Cambridge en-GB MP3) cho từ đơn
-   */
-  async function fetchHumanBritishWordAudio(singleWord) {
-    const clean = String(singleWord || "").trim().toLowerCase();
-    if (!/^[a-z]+$/.test(clean)) return null;
-    if (humanAudioCache[clean] !== undefined) return humanAudioCache[clean];
-
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 1400);
-      const res = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(clean)}`,
-        { signal: controller.signal }
-      );
-      clearTimeout(timeoutId);
-      if (!res.ok) {
-        humanAudioCache[clean] = null;
-        return null;
-      }
-      const data = await res.json();
-      const phonetics = [];
-      (data || []).forEach((entry) => {
-        if (Array.isArray(entry.phonetics)) {
-          phonetics.push(...entry.phonetics);
-        }
-      });
-
-      // Ưu tiên file thu âm giọng Anh-Anh (-uk.mp3 / -gb.mp3) trước
-      const ukAudio = phonetics.find(
-        (p) => p.audio && (p.audio.includes("-uk") || p.audio.includes("-gb"))
-      );
-      const anyAudio = phonetics.find((p) => p.audio && p.audio.endsWith(".mp3"));
-      const chosenUrl = (ukAudio && ukAudio.audio) || (anyAudio && anyAudio.audio) || null;
-      humanAudioCache[clean] = chosenUrl;
-      return chosenUrl;
-    } catch (e) {
-      humanAudioCache[clean] = null;
-      return null;
-    }
-  }
-
   function stopCurrentSpeech() {
-    speakSeqId++;
-    if (currentAudioEl) {
-      try {
-        currentAudioEl.pause();
-        currentAudioEl.currentTime = 0;
-      } catch (e) {
-        // ignore
-      }
-      currentAudioEl = null;
-    }
     if ("speechSynthesis" in window) {
       try {
         window.speechSynthesis.cancel();
@@ -4903,113 +4723,47 @@ window.GKSpeech = (function () {
     }
   }
 
-  /**
-   * Đọc văn bản tiếng Anh theo phong cách kể chuyện ấm áp BBC Storytellers ("The Perfect Thing")
-   * - Nếu là từ đơn ở tốc độ chuẩn: ưu tiên phát thu âm người thật Anh Quốc (nếu có mạng), fallback sang giọng kể chuyện en-GB
-   * - Nếu là câu/đoạn hội thoại: ngắt nhịp tự nhiên giữa các vế câu, giọng ấm (pitch 0.96, rate 0.85)
-   */
-  async function speak(text, options = {}) {
+  
+  function speak(text, options = {}) {
     if (!text) return;
-    stopCurrentSpeech();
-    const mySeq = speakSeqId;
-
-    const cleanText = String(text)
-      .replace(/_{2,}/g, " ... ")
-      .replace(/\[blank\]/gi, " ... ")
-      .trim();
-
-    const rate = typeof options.rate === "number" ? options.rate : DEFAULT_RATE;
-    const isSingleWord = /^[a-zA-Z'-]+$/.test(cleanText) && !options.forceSynth;
-
-    // 1. Thử phát giọng người thật bản xứ Anh Quốc (Oxford/Cambridge MP3) cho từ vựng đơn
-    if (isSingleWord && rate >= 0.8) {
-      const mp3Url = await fetchHumanBritishWordAudio(cleanText);
-      if (mySeq !== speakSeqId) return;
-      if (mp3Url) {
-        try {
-          const audio = new Audio(mp3Url);
-          currentAudioEl = audio;
-          audio.playbackRate = rate >= 0.84 ? 0.92 : 0.75; // Nhịp nghe rõ ràng cho trẻ 7 tuổi
-          if (options.onStart) options.onStart();
-          audio.onended = () => {
-            currentAudioEl = null;
-            if (options.onEnd) options.onEnd();
-          };
-          audio.onerror = () => {
-            currentAudioEl = null;
-            speakWithStorytellerSynth(cleanText, rate, mySeq, options);
-          };
-          await audio.play();
-          return;
-        } catch (e) {
-          // Nếu trình duyệt chặn hoặc lỗi mạng thì chuyển ngay sang giọng kể chuyện en-GB
-        }
-      }
-    }
-
-    if (mySeq !== speakSeqId) return;
-    speakWithStorytellerSynth(cleanText, rate, mySeq, options);
-  }
-
-  /**
-   * Đọc bằng Web Speech API đã tinh chỉnh nhịp điệu kể chuyện (Storyteller Cadence)
-   */
-  function speakWithStorytellerSynth(cleanText, rate, mySeq, options = {}) {
     if (!("speechSynthesis" in window)) {
       if (options.onEnd) options.onEnd();
       return;
     }
 
+    try {
+      // Hủy câu cũ đang đọc dở để phát ngay câu mới tức thì
+      window.speechSynthesis.cancel();
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
+    } catch (e) {
+      // ignore
+    }
+
     if (!preferredVoice) initVoices();
 
-    // Tách câu dài thành các nhịp kể chuyện tự nhiên (theo dấu chấm, chấm cảm, chấm hỏi)
-    // để có khoảng nghỉ thở 220ms ấm áp như người kể chuyện BBC Storytellers
-    const clauses = cleanText
-      .split(/(?<=[.!?])\s+/)
-      .map((s) => s.trim())
-      .filter(Boolean);
+    const cleanText = String(text)
+      .replace(/_{2,}/g, " blank ")
+      .replace(/\[blank\]/gi, " blank ")
+      .trim();
 
-    if (clauses.length === 0) {
-      if (options.onEnd) options.onEnd();
-      return;
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    utterance.lang = preferredVoice ? preferredVoice.lang : "en-GB";
+    if (preferredVoice) {
+      utterance.voice = preferredVoice;
+    }
+    utterance.rate = typeof options.rate === "number" ? options.rate : DEFAULT_RATE;
+    utterance.pitch = typeof options.pitch === "number" ? options.pitch : STORYTELLER_PITCH;
+
+    if (options.onStart) utterance.onstart = options.onStart;
+    if (options.onEnd) {
+      utterance.onend = options.onEnd;
+      utterance.onerror = options.onEnd;
     }
 
-    let idx = 0;
-    if (options.onStart) options.onStart();
-
-    function speakNextClause() {
-      if (mySeq !== speakSeqId) return;
-      if (idx >= clauses.length) {
-        if (options.onEnd) options.onEnd();
-        return;
-      }
-
-      const clause = clauses[idx++];
-      const utterance = new SpeechSynthesisUtterance(clause);
-      utterance.lang = preferredVoice ? preferredVoice.lang : "en-GB";
-      if (preferredVoice) {
-        utterance.voice = preferredVoice;
-      }
-      utterance.rate = rate;
-      utterance.pitch = typeof options.pitch === "number" ? options.pitch : STORYTELLER_PITCH;
-
-      utterance.onend = () => {
-        if (mySeq !== speakSeqId) return;
-        if (idx < clauses.length) {
-          setTimeout(speakNextClause, 230); // Nhịp nghỉ kể chuyện tự nhiên
-        } else if (options.onEnd) {
-          options.onEnd();
-        }
-      };
-
-      utterance.onerror = () => {
-        if (options.onEnd) options.onEnd();
-      };
-
-      window.speechSynthesis.speak(utterance);
-    }
-
-    speakNextClause();
+    // Gọi trực tiếp đồng bộ trong luồng sự kiện click giúp iPhone iOS và Chrome phát âm thanh ngay lập tức (<10ms)
+    window.speechSynthesis.speak(utterance);
   }
 
   function speakSlow(text, options = {}) {
@@ -5017,7 +4771,7 @@ window.GKSpeech = (function () {
   }
 
   // =========================================================================
-  // HỆ THỐNG KHEN NGỢI NHIỆT TÌNH KHI GIA KHIÊM LÀM BÀI TỐT (PRAISE ENGINE)
+  // HỆ THỐNG KHEN NGỢI NHIỆT TÌNH KHI GIA KHIÊM LÀM BÀI TỐT
   // =========================================================================
   function triggerPraise(customOptions = {}) {
     comboCount++;
@@ -5029,7 +4783,6 @@ window.GKSpeech = (function () {
     const enText = customOptions.enText || randomPraise.en;
     const icon = customOptions.icon || randomPraise.icon;
 
-    // Tạo hoặc cập nhật Banner khen ngợi nổi bật trên màn hình
     let toast = document.getElementById("gkPraiseToast");
     if (!toast) {
       toast = document.createElement("div");
@@ -5040,7 +4793,7 @@ window.GKSpeech = (function () {
 
     const comboBadge =
       comboCount >= 2
-        ? `<span class="praise-combo-pill">🔥 Chuỗi đúng x${comboCount} liên tiếp!</span>`
+        ? `<span class="praise-combo-pill">🔥 Chuỗi đúng x${comboCount}!</span>`
         : "";
 
     toast.innerHTML = `
@@ -5057,14 +4810,11 @@ window.GKSpeech = (function () {
       </div>
     `;
 
-    toast.classList.remove("show");
-    void toast.offsetWidth; // reflow để chạy lại animation
     toast.classList.add("show");
-
     clearTimeout(toast._hideTimer);
     toast._hideTimer = setTimeout(() => {
       toast.classList.remove("show");
-    }, 3400);
+    }, 3000);
 
     return {
       comboCount,
@@ -5078,7 +4828,7 @@ window.GKSpeech = (function () {
   }
 
   // =========================================================================
-  // NHẬN DIỆN GIỌNG NÓI & CHẤM ĐIỂM PHÁT ÂM (SpeechRecognition)
+  // NHẬN DIỆN GIỌNG NÓI TỨC THÌ (SpeechRecognition)
   // =========================================================================
   function isRecognitionSupported() {
     return Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
@@ -5173,13 +4923,14 @@ window.GKSpeech = (function () {
     if (!SpeechRec) {
       if (callbacks.onError) {
         callbacks.onError(
-          "Trình duyệt này chưa hỗ trợ chấm điểm giọng nói trực tiếp. Gia Khiêm hãy bấm nút 'Em đã đọc to' bên cạnh để nhận sao khen thưởng nhé!"
+          "Trình duyệt này chưa hỗ trợ thu âm trực tiếp. Gia Khiêm hãy bấm nút '✅ Em đã đọc to' bên cạnh để nhận 3 sao nhé!"
         );
       }
       return null;
     }
 
     stopCurrentSpeech();
+    playSfx("pop"); // Phát tiếng bíp nhẹ báo hiệu bắt đầu thu âm ngay tức thì!
 
     if (activeRecognition) {
       try {
@@ -5192,7 +4943,7 @@ window.GKSpeech = (function () {
 
     const recognition = new SpeechRec();
     activeRecognition = recognition;
-    recognition.lang = "en-GB"; // Đồng bộ chuẩn Anh-Anh
+    recognition.lang = "en-GB";
     recognition.interimResults = false;
     recognition.maxAlternatives = 3;
     recognition.continuous = false;
@@ -5230,7 +4981,7 @@ window.GKSpeech = (function () {
       handled = true;
       let msg = "Chưa nghe rõ giọng của Gia Khiêm. Con hãy bấm Mic và đọc to, rõ hơn nhé!";
       if (event.error === "not-allowed" || event.error === "service-not-allowed") {
-        msg = "Trình duyệt chưa được cấp quyền Micro. Bố/mẹ hãy bấm Cho phép (Allow) Micro hoặc để bé bấm nút 'Em đã đọc to' bên cạnh nhé!";
+        msg = "Trình duyệt chưa cấp quyền Micro. Bố/mẹ bấm Cho phép Micro hoặc để bé bấm nút '✅ Em đã đọc to' ngay bên cạnh nhé!";
       } else if (event.error === "no-speech") {
         msg = "Máy chưa nghe thấy tiếng. Gia Khiêm đưa miệng lại gần mic và đọc to lên nhé!";
       }
@@ -5257,7 +5008,7 @@ window.GKSpeech = (function () {
   }
 
   // =========================================================================
-  // HIỆU ỨNG ÂM THANH VUI NHỘN (WEB AUDIO SYNTHESIS)
+  // HIỆU ỨNG ÂM THANH VUI NHỘN (WEB AUDIO SYNTHESIS - 0ms LATENCY)
   // =========================================================================
   function getAudioCtx() {
     if (!audioCtx) {
@@ -5281,52 +5032,65 @@ window.GKSpeech = (function () {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = "triangle";
-          osc.frequency.setValueAtTime(freq, now + idx * 0.065);
-          gain.gain.setValueAtTime(0.16, now + idx * 0.065);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.065 + 0.24);
+          osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+          gain.gain.setValueAtTime(0.15, now + idx * 0.06);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.22);
           osc.connect(gain);
           gain.connect(ctx.destination);
-          osc.start(now + idx * 0.065);
-          osc.stop(now + idx * 0.065 + 0.25);
+          osc.start(now + idx * 0.06);
+          osc.stop(now + idx * 0.06 + 0.23);
         });
       } else if (type === "wrong") {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
         osc.frequency.setValueAtTime(300, now);
-        osc.frequency.linearRampToValueAtTime(210, now + 0.22);
-        gain.gain.setValueAtTime(0.14, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.frequency.linearRampToValueAtTime(200, now + 0.2);
+        gain.gain.setValueAtTime(0.13, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.23);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.26);
+        osc.stop(now + 0.24);
       } else if (type === "fanfare") {
         [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((freq, idx) => {
           const osc = ctx.createOscillator();
           const gain = ctx.createGain();
           osc.type = "triangle";
-          const start = now + idx * 0.1;
+          const start = now + idx * 0.09;
           osc.frequency.setValueAtTime(freq, start);
-          gain.gain.setValueAtTime(0.2, start);
-          gain.gain.exponentialRampToValueAtTime(0.001, start + 0.38);
+          gain.gain.setValueAtTime(0.18, start);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + 0.34);
           osc.connect(gain);
           gain.connect(ctx.destination);
           osc.start(start);
-          osc.stop(start + 0.4);
+          osc.stop(start + 0.35);
         });
+      } else if (type === "splash") {
+        // Tiếng nước bắn tủm khi quăng cần câu cá hoặc tưới cây
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(600, now);
+        osc.frequency.exponentialRampToValueAtTime(180, now + 0.18);
+        gain.gain.setValueAtTime(0.16, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.21);
       } else if (type === "pop") {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(440, now);
-        osc.frequency.exponentialRampToValueAtTime(660, now + 0.07);
-        gain.gain.setValueAtTime(0.1, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+        osc.frequency.setValueAtTime(480, now);
+        osc.frequency.exponentialRampToValueAtTime(720, now + 0.055);
+        gain.gain.setValueAtTime(0.09, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.065);
         osc.connect(gain);
         gain.connect(ctx.destination);
         osc.start(now);
-        osc.stop(now + 0.09);
+        osc.stop(now + 0.07);
       }
     } catch (e) {
       // ignore
@@ -5352,14 +5116,7 @@ window.GKSpeech = (function () {
 })();
 
 
-/* === js\gemini.js === */
-/**
- * js/gemini.js
- * Tích hợp Google Gemini AI phiên bản cao cấp (Gemini 4 Neon High / Argon High / Gemini Pro Thinking)
- * - Hỗ trợ tự động quét danh sách toàn bộ Model có trên tài khoản Google/Gemini của người dùng
- * - Kích hoạt chế độ Tư duy sâu (High Thinking Effort) khi soạn giáo trình Oxford Family and Friends 2
- * - Tự động bổ sung toàn bộ từ vựng xuất hiện trong hội thoại vào Từ điển chạm (Tap-to-Translate)
- */
+
 
 window.GKGemini = (function () {
   const ACCOUNT_MODELS_CACHE_KEY = "gk_english_v1_account_models_cache";
@@ -5409,9 +5166,7 @@ window.GKGemini = (function () {
     }
   }
 
-  /**
-   * Quét danh sách toàn bộ Model thực tế được cấp quyền trên tài khoản API Key của người dùng
-   */
+  
   async function fetchAccountModels(apiKey) {
     const cleanKey = (apiKey || window.GKStorage.getGeminiApiKey() || "").trim();
     if (!cleanKey) {
@@ -5461,11 +5216,7 @@ window.GKGemini = (function () {
     return models;
   }
 
-  /**
-   * Xây dựng danh sách thứ tự ưu tiên gọi Model dựa trên lựa chọn của người dùng
-   * Khi chọn "gemini-4-neon-high" hoặc "gemini-4-argon-high", hệ thống sẽ ưu tiên gọi
-   * model Pro / cao cấp nhất có trên tài khoản của người dùng.
-   */
+  
   function buildModelCandidates(preferredModel) {
     const cached = getCachedAccountModels().map((m) => m.id);
     const highEndAccountModels = cached.filter((id) => {
@@ -5592,9 +5343,7 @@ window.GKGemini = (function () {
     throw lastError || new Error("Không thể kết nối tới Gemini API. Vui lòng kiểm tra mạng hoặc API Key.");
   }
 
-  /**
-   * Kiểm tra nhanh kết nối Gemini API Key và trả về phiên bản Model thực tế được kích hoạt
-   */
+  
   async function testConnection(apiKey, model) {
     const prompt = `Trả về đúng JSON sau: {"status":"ok","greeting":"Xin chào bé Gia Khiêm lớp 2!"}`;
     const res = await callGeminiJson(prompt, apiKey, model);
@@ -5605,9 +5354,7 @@ window.GKGemini = (function () {
     };
   }
 
-  /**
-   * Tạo bài học mới hoàn chỉnh gồm 3 chặng cho Gia Khiêm với chế độ Tư duy sâu (High Effort)
-   */
+  
   async function generateDailyLesson(options = {}) {
     const apiKey = window.GKStorage.getGeminiApiKey();
     const model = window.GKStorage.getGeminiModel();
@@ -5780,40 +5527,105 @@ YÊU CẦU NGHIÊM NGẶT VỀ ĐỊNH DẠNG JSON TRẢ VỀ (chỉ trả về 
 })();
 
 
-/* === js\games.js === */
-/**
- * js/games.js
- * Hệ thống 6 Trò Chơi Học Tiếng Anh Vui Nhộn lồng ghép trực tiếp vào bài học của Gia Khiêm:
- * 1. 🌱 Nông Trại Vui Vẻ & Trồng Cây (Happy Farm & Tree Growing)
- * 2. ⛏️ Đào Vàng Tiếng Anh (Gold Miner English)
- * 3. 🎯 Pháo Sao Bắn Bóng Từ Vựng (Star Target Shooter)
- * 4. ♟️ Cờ Vua Hiệp Sĩ Tiếng Anh (Chess Knight Quest)
- * 5. 🍬 Kẹo Ngọt Candy Match (Candy English Crush)
- * 6. 🎣 Câu Cá Đại Dương (Happy Fishing)
- */
+
 
 window.GKGames = (function () {
-  let activeGameId = "farm"; // 'farm' | 'gold' | 'shooter' | 'chess' | 'candy' | 'fishing'
+  let activeGameId = "farm";
   let currentUnitRef = null;
 
-  // Trạng thái nội bộ của từng game
+  // =========================================================================
+  // TRẠNG THÁI GAME 1: 🌱 TRỒNG CÂY CHÂN THẬT (7 CẤP SINH TRƯỞNG 0..6)
+  // =========================================================================
   let farmTargetWord = null;
   let farmOptions = [];
   let farmSelectedPlotIdx = 0;
-  let farmFeedbackHtml = "";
+  let farmActionAnim = ""; // 'watering' | 'killbug' | 'sunshine' | 'shrink' | 'harvest'
+  let farmStatusBanner = "";
 
+  // 7 giai đoạn sinh trưởng chân thật của cây (từ ươm mầm đến đại thụ ra quả chín)
+  const PLANT_STAGES = [
+    {
+      level: 0,
+      heightCm: 15,
+      stageTitle: "Giai đoạn 1/7: Ươm mầm trong đất ẩm",
+      nextTask: "water",
+      taskBadge: "🚿 Nhiệm vụ: Tưới nước ấm để hạt giống nảy mầm vươn lên!",
+      hasBug: false
+    },
+    {
+      level: 1,
+      heightCm: 42,
+      stageTitle: "Giai đoạn 2/7: Mầm non nhú lá xanh",
+      nextTask: "bug",
+      taskBadge: "🐛 Nguy hiểm: Có sâu xanh đang bò trên lá non! Trả lời đúng để diệt sâu bọ!",
+      hasBug: true
+    },
+    {
+      level: 2,
+      heightCm: 75,
+      stageTitle: "Giai đoạn 3/7: Cây non vươn thân cứng cáp",
+      nextTask: "water",
+      taskBadge: "🚿 Nhiệm vụ: Tưới nước & bón phân để cây đâm cành xòe tán!",
+      hasBug: false
+    },
+    {
+      level: 3,
+      heightCm: 110,
+      stageTitle: "Giai đoạn 4/7: Cây trưởng thành & kết nụ",
+      nextTask: "bug",
+      taskBadge: "🐛 Nhiệm vụ: Diệt sâu ăn nụ & chiếu nắng ấm để cây bung nở hoa!",
+      hasBug: true
+    },
+    {
+      level: 4,
+      heightCm: 140,
+      stageTitle: "Giai đoạn 5/7: Cây trổ đầy hoa thơm rực rỡ 🌸",
+      nextTask: "water",
+      taskBadge: "🚿 Nhiệm vụ: Tưới nước mát giúp hoa thụ phấn kết thành quả non!",
+      hasBug: false
+    },
+    {
+      level: 5,
+      heightCm: 165,
+      stageTitle: "Giai đoạn 6/7: Quả non kết trái đầy cành 🍏",
+      nextTask: "bug",
+      taskBadge: "🐛 Nhiệm vụ: Xua đuổi sâu đục quả & đón nắng để quả chín đỏ mọng!",
+      hasBug: true
+    },
+    {
+      level: 6,
+      heightCm: 180,
+      stageTitle: "Giai đoạn 7/7: Cây trĩu quả chín đỏ rực! 🍎🎉",
+      nextTask: "harvest",
+      taskBadge: "🧺 Cây đã cao 180cm và chín mọng! Trả lời đúng hoặc bấm Thu Hoạch để hái quả!",
+      hasBug: false
+    }
+  ];
+
+  // =========================================================================
+  // TRẠNG THÁI GAME 2: 🎣 CÂU CÁ HỒ NƯỚC THẬT
+  // =========================================================================
+  let fishTargetWord = null;
+  let fishList = [];
+  let fishingState = "idle"; // 'idle' | 'casting' | 'caught' | 'missed'
+  let fishingTargetLane = null;
+  let lastCaughtWord = "";
+
+  // =========================================================================
+  // TRẠNG THÁI CÁC GAME KHÁC (ĐÀO VÀNG, BẮN TỪ, CỜ VUA, CANDY)
+  // =========================================================================
   let goldTargetWord = null;
   let goldNuggets = [];
   let goldReelingIdx = null;
-  let goldRoundScore = 0;
+  let goldWrongIdx = null;
 
   let shooterTargetWord = null;
   let shooterTargets = [];
   let shooterScore = 0;
   let shooterHitIdx = null;
 
-  let chessKnightPos = 0; // 0..15 trên bàn cờ 4x4
-  let chessGemPositions = [2, 5, 10, 15];
+  let chessKnightPos = 0;
+  let chessGemPositions = [2, 6, 9, 15];
   let chessCollectedGems = [];
   let chessTargetWord = null;
   let chessOptions = [];
@@ -5823,29 +5635,28 @@ window.GKGames = (function () {
   let candyFlipped = [];
   let candyMatchedIds = [];
 
-  let fishTargetWord = null;
-  let fishList = [];
-  let fishHookedIdx = null;
-
   const GAME_TABS = [
-    { id: "farm", icon: "🌱", name: "Nông Trại & Trồng Cây", shortName: "Nông Trại" },
-    { id: "gold", icon: "⛏️", name: "Đào Vàng Tiếng Anh", shortName: "Đào Vàng" },
+    { id: "farm", icon: "🌱", name: "Trồng Cây & Diệt Sâu", shortName: "Trồng Cây" },
+    { id: "fishing", icon: "🎣", name: "Câu Cá Hồ Nước", shortName: "Câu Cá" },
+    { id: "gold", icon: "⛏️", name: "Đào Vàng Hầm Mỏ", shortName: "Đào Vàng" },
     { id: "shooter", icon: "🎯", name: "Pháo Sao Bắn Từ", shortName: "Bắn Từ" },
     { id: "chess", icon: "♟️", name: "Cờ Vua Hiệp Sĩ", shortName: "Cờ Vua" },
-    { id: "candy", icon: "🍬", name: "Kẹo Ngọt Candy", shortName: "Candy" },
-    { id: "fishing", icon: "🎣", name: "Câu Cá Đại Dương", shortName: "Câu Cá" }
+    { id: "candy", icon: "🍬", name: "Kẹo Ngọt Candy", shortName: "Candy" }
   ];
 
   function getVocabPool(unit) {
-    const base = (unit && Array.isArray(unit.vocabulary) && unit.vocabulary.length > 0)
+    return unit && Array.isArray(unit.vocabulary) && unit.vocabulary.length > 0
       ? unit.vocabulary
       : window.GKSeedData.UNITS[7].vocabulary;
-    return base;
   }
 
-  function pickRandomQuestion(unit) {
+  function pickRandomQuestion(unit, excludeWord) {
     const pool = getVocabPool(unit);
-    const target = pool[Math.floor(Math.random() * pool.length)];
+    const candidates =
+      pool.length > 1 && excludeWord
+        ? pool.filter((v) => v.word.toLowerCase() !== excludeWord.toLowerCase())
+        : pool;
+    const target = candidates[Math.floor(Math.random() * candidates.length)] || pool[0];
     const distractors = pool
       .filter((v) => v.word.toLowerCase() !== target.word.toLowerCase())
       .sort(() => Math.random() - 0.5)
@@ -5867,7 +5678,10 @@ window.GKGames = (function () {
       const q = pickRandomQuestion(unit);
       farmTargetWord = q.target;
       farmOptions = q.options;
-      farmFeedbackHtml = "";
+      farmActionAnim = "";
+      farmStatusBanner = "";
+    } else if (activeGameId === "fishing") {
+      setupFishingRound(unit);
     } else if (activeGameId === "gold") {
       setupGoldRound(unit);
     } else if (activeGameId === "shooter") {
@@ -5876,14 +5690,9 @@ window.GKGames = (function () {
       setupChessGame(unit);
     } else if (activeGameId === "candy") {
       setupCandyGame(unit);
-    } else if (activeGameId === "fishing") {
-      setupFishingRound(unit);
     }
   }
 
-  // =========================================================================
-  // GIAO DIỆN TRUNG TÂM 6 TRÒ CHƠI (TỐI ƯU CHO IPHONE 11 PRO MAX)
-  // =========================================================================
   function renderGamesHub(container, unit, onStatsChange) {
     currentUnitRef = unit || currentUnitRef;
     if (!farmTargetWord && activeGameId === "farm") initCurrentGameState();
@@ -5906,6 +5715,8 @@ window.GKGames = (function () {
     let gameBodyHtml = "";
     if (activeGameId === "farm") {
       gameBodyHtml = renderFarmGameHtml(fs);
+    } else if (activeGameId === "fishing") {
+      gameBodyHtml = renderFishingGameHtml(fs);
     } else if (activeGameId === "gold") {
       gameBodyHtml = renderGoldGameHtml(fs);
     } else if (activeGameId === "shooter") {
@@ -5914,38 +5725,33 @@ window.GKGames = (function () {
       gameBodyHtml = renderChessGameHtml(fs);
     } else if (activeGameId === "candy") {
       gameBodyHtml = renderCandyGameHtml(fs);
-    } else if (activeGameId === "fishing") {
-      gameBodyHtml = renderFishingGameHtml(fs);
     }
 
     container.innerHTML = `
       <div class="stage-card games-hub-card">
         <div class="games-header-banner">
           <div>
-            <h2 class="games-hub-title">🎮 Khu Vườn 6 Trò Chơi Tiếng Anh Của Gia Khiêm</h2>
-            <p class="games-hub-sub">Vừa chơi vui vừa thuộc làu từ vựng <strong>${currentUnitRef.unitNumber}: ${currentUnitRef.title}</strong>!</p>
+            <h2 class="games-hub-title">🎮 Khu Trò Chơi Tương Tác Chân Thật</h2>
+            <p class="games-hub-sub">Ôn tập từ vựng <strong>${currentUnitRef.unitNumber}: ${currentUnitRef.title}</strong> qua trò chơi sống động!</p>
           </div>
           <div class="games-mini-stats">
             <span class="g-stat-chip">🍎 Quả: <strong>${fs.harvestedFruits || 0}</strong></span>
-            <span class="g-stat-chip">🪙 Vàng: <strong>${fs.goldCoins || 0}</strong></span>
             <span class="g-stat-chip">🐠 Cá: <strong>${fs.fishCaught || 0}</strong></span>
-            <span class="g-stat-chip">♟️ Thắng cờ: <strong>${fs.chessWins || 0}</strong></span>
+            <span class="g-stat-chip">🪙 Vàng: <strong>${fs.goldCoins || 0}</strong></span>
+            <span class="g-stat-chip">♟️ Cờ: <strong>${fs.chessWins || 0}</strong></span>
           </div>
         </div>
 
-        <!-- Thanh chọn 6 trò chơi (Grid 3x2 trên iPhone 11 Pro Max, 6 cột trên máy tính) -->
         <div class="games-selector-grid">
           ${selectorHtml}
         </div>
 
-        <!-- Sân chơi chính -->
         <div class="game-arena-box" id="gameArenaBox">
           ${gameBodyHtml}
         </div>
       </div>
     `;
 
-    // Gắn sự kiện đổi trò chơi
     container.querySelectorAll("[data-game-tab]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const gId = btn.getAttribute("data-game-tab");
@@ -5954,140 +5760,623 @@ window.GKGames = (function () {
       });
     });
 
-    // Gắn sự kiện riêng cho từng game
     bindActiveGameEvents(container, onStatsChange);
   }
 
   // =========================================================================
-  // GAME 1: 🌱 NÔNG TRẠI VUI VẺ & TRỒNG CÂY (HAPPY FARM & TREE GROWING)
+  // GAME 1: 🌱 TRỒNG CÂY CHÂN THẬT (ƯƠM MẦM -> TƯỚI CÂY -> DIỆT SÂU -> RA HOA -> KẾT QUẢ)
+  // NẾU CHỌN SAI CÂY SẼ BỊ THẤP ĐI!
   // =========================================================================
+  function buildDynamicPlantSvg(level, fruitEmoji, animType, hasBug) {
+    // Tính toán kích thước thân cây, tán lá, hoa và quả theo level (0..6)
+    const stemHeights = [22, 52, 85, 118, 145, 165, 180];
+    const stemH = stemHeights[Math.min(6, Math.max(0, level))];
+    const groundY = 230;
+    const topY = groundY - stemH;
+    const strokeW = 5 + level * 2.5;
+    const stemColor = level <= 1 ? "#43A047" : "#6D4C41";
+    const isShrinking = animType === "shrink";
+
+    // Lá non & cành nhánh
+    let branchesAndLeavesSvg = "";
+    if (level === 0) {
+      // Hạt giống nảy mầm nhỏ
+      branchesAndLeavesSvg = `
+        <ellipse cx="180" cy="${groundY + 6}" rx="12" ry="8" fill="#8D6E63" stroke="#5D4037" stroke-width="2"/>
+        <path d="M180 ${topY + 6} Q168 ${topY - 6} 162 ${topY + 4} Q172 ${topY + 12} 180 ${topY + 6} Z" fill="#66BB6A"/>
+        <path d="M180 ${topY + 6} Q192 ${topY - 6} 198 ${topY + 4} Q188 ${topY + 12} 180 ${topY + 6} Z" fill="#43A047"/>
+      `;
+    } else if (level === 1) {
+      // Cây mầm 4 lá
+      branchesAndLeavesSvg = `
+        <path d="M180 ${topY + 24} Q145 ${topY + 8} 138 ${topY + 24} Q156 ${topY + 38} 180 ${topY + 24} Z" fill="#66BB6A"/>
+        <path d="M180 ${topY + 20} Q215 ${topY + 4} 222 ${topY + 20} Q204 ${topY + 34} 180 ${topY + 20} Z" fill="#43A047"/>
+        <path d="M180 ${topY + 4} Q155 ${topY - 14} 148 ${topY + 2} Q164 ${topY + 14} 180 ${topY + 4} Z" fill="#81C784"/>
+        <path d="M180 ${topY + 4} Q205 ${topY - 14} 212 ${topY + 2} Q196 ${topY + 14} 180 ${topY + 4} Z" fill="#66BB6A"/>
+      `;
+    } else {
+      // Từ level 2..6: Có cành gỗ và tán lá lớn dần
+      const canopyRx = 38 + (level - 2) * 16;
+      const canopyRy = 28 + (level - 2) * 12;
+      const leafTone1 = isShrinking ? "#AED581" : "#43A047";
+      const leafTone2 = isShrinking ? "#C5E1A5" : "#66BB6A";
+      const leafTone3 = isShrinking ? "#DCEDC8" : "#81C784";
+
+      branchesAndLeavesSvg = `
+        <!-- Cành cây hai bên -->
+        <path d="M180 ${topY + 45} Q150 ${topY + 25} 135 ${topY + 15}" stroke="${stemColor}" stroke-width="${Math.max(4, strokeW - 4)}" stroke-linecap="round" fill="none"/>
+        <path d="M180 ${topY + 38} Q210 ${topY + 20} 225 ${topY + 12}" stroke="${stemColor}" stroke-width="${Math.max(4, strokeW - 4)}" stroke-linecap="round" fill="none"/>
+        <!-- Tán lá nhiều tầng -->
+        <ellipse cx="${180 - canopyRx * 0.45}" cy="${topY + 12}" rx="${canopyRx * 0.72}" ry="${canopyRy * 0.72}" fill="${leafTone1}"/>
+        <ellipse cx="${180 + canopyRx * 0.45}" cy="${topY + 12}" rx="${canopyRx * 0.72}" ry="${canopyRy * 0.72}" fill="${leafTone1}"/>
+        <ellipse cx="180" cy="${topY - 4}" rx="${canopyRx}" ry="${canopyRy}" fill="${leafTone2}"/>
+        <ellipse cx="180" cy="${topY - 12}" rx="${canopyRx * 0.75}" ry="${canopyRy * 0.65}" fill="${leafTone3}"/>
+      `;
+    }
+
+    // Nụ hoa / Hoa nở rực rỡ (Level 3, 4)
+    let flowersSvg = "";
+    if (level === 3) {
+      // Nụ hoa chúm chím
+      flowersSvg = `
+        <circle cx="152" cy="${topY - 4}" r="6" fill="#F48FB1" stroke="#FFF" stroke-width="1.5"/>
+        <circle cx="185" cy="${topY - 18}" r="6" fill="#F48FB1" stroke="#FFF" stroke-width="1.5"/>
+        <circle cx="210" cy="${topY + 2}" r="6" fill="#F48FB1" stroke="#FFF" stroke-width="1.5"/>
+      `;
+    } else if (level === 4) {
+      // Hoa nở bung 5 cánh rực rỡ
+      const flowerPositions = [
+        [135, topY + 6],
+        [162, topY - 16],
+        [195, topY - 20],
+        [224, topY + 4],
+        [178, topY + 10],
+        [150, topY + 22],
+        [208, topY + 20]
+      ];
+      flowersSvg = flowerPositions
+        .map(
+          ([fx, fy]) => `
+          <g transform="translate(${fx},${fy})">
+            <circle cx="0" cy="-7" r="5.5" fill="#F8BBD0"/>
+            <circle cx="7" cy="-2" r="5.5" fill="#F48FB1"/>
+            <circle cx="4" cy="6" r="5.5" fill="#F8BBD0"/>
+            <circle cx="-4" cy="6" r="5.5" fill="#F48FB1"/>
+            <circle cx="-7" cy="-2" r="5.5" fill="#F8BBD0"/>
+            <circle cx="0" cy="0" r="4.5" fill="#FFD54F"/>
+          </g>
+        `
+        )
+        .join("");
+    }
+
+    // Quả non (Level 5) hoặc Quả chín mọng (Level 6)
+    let fruitsSvg = "";
+    if (level === 5) {
+      const fruitPos = [
+        [132, topY + 10],
+        [158, topY - 14],
+        [192, topY - 18],
+        [226, topY + 8],
+        [176, topY + 14],
+        [148, topY + 26],
+        [208, topY + 24]
+      ];
+      fruitsSvg = fruitPos
+        .map(
+          ([fx, fy]) => `
+          <g transform="translate(${fx},${fy})">
+            <circle cx="0" cy="0" r="9" fill="#9CCC65" stroke="#558B2F" stroke-width="2"/>
+            <circle cx="-3" cy="-3" r="2.5" fill="#DCEDC8"/>
+          </g>
+        `
+        )
+        .join("");
+    } else if (level >= 6) {
+      const fruitPos = [
+        [124, topY + 12],
+        [152, topY - 18],
+        [184, topY - 26],
+        [216, topY - 14],
+        [236, topY + 14],
+        [168, topY + 10],
+        [198, topY + 12],
+        [142, topY + 28],
+        [214, topY + 28]
+      ];
+      fruitsSvg = fruitPos
+        .map(
+          ([fx, fy]) => `
+          <text x="${fx}" y="${fy + 8}" font-size="23" text-anchor="middle" class="svg-ripe-fruit">${fruitEmoji || "🍎"}</text>
+        `
+        )
+        .join("");
+    }
+
+    // Sâu bọ bò nhúc nhích trên cây khi đến giai đoạn cần diệt sâu
+    let bugsSvg = "";
+    if (hasBug && animType !== "killbug") {
+      const bugY1 = topY + 8;
+      const bugY2 = topY + 24;
+      bugsSvg = `
+        <g class="svg-crawling-bug" transform="translate(148, ${bugY1})">
+          <circle cx="0" cy="0" r="6" fill="#AFB42B"/>
+          <circle cx="8" cy="-1" r="6.5" fill="#C0CA33"/>
+          <circle cx="16" cy="0" r="7" fill="#CDDC39"/>
+          <circle cx="18" cy="-2" r="2" fill="#B71C1C"/>
+          <text x="8" y="-11" font-size="11" font-weight="900" fill="#B71C1C" text-anchor="middle">🐛 Sâu!</text>
+        </g>
+        <g class="svg-crawling-bug" transform="translate(202, ${bugY2})">
+          <circle cx="0" cy="0" r="6" fill="#AFB42B"/>
+          <circle cx="-8" cy="-1" r="6.5" fill="#C0CA33"/>
+          <circle cx="-15" cy="0" r="7" fill="#CDDC39"/>
+          <circle cx="-17" cy="-2" r="2" fill="#B71C1C"/>
+        </g>
+      `;
+    }
+
+    // Hiệu ứng Bình tưới nước phun mưa / Diệt sâu / Nắng chiếu
+    let actionOverlaySvg = "";
+    if (animType === "watering") {
+      actionOverlaySvg = `
+        <g class="svg-watering-effect">
+          <text x="275" y="65" font-size="44">🚿</text>
+          <text x="210" y="85" font-size="22">💧</text>
+          <text x="180" y="105" font-size="24">💧</text>
+          <text x="155" y="95" font-size="22">💧</text>
+          <text x="195" y="130" font-size="22">💦</text>
+          <text x="165" y="140" font-size="22">✨</text>
+        </g>
+      `;
+    } else if (animType === "killbug") {
+      actionOverlaySvg = `
+        <g class="svg-killbug-effect">
+          <text x="260" y="75" font-size="40">🐦✨</text>
+          <text x="180" y="${topY - 15}" font-size="22" font-weight="900" fill="#1B5E20" text-anchor="middle">💥 Đã diệt sạch sâu bọ!</text>
+        </g>
+      `;
+    } else if (animType === "shrink") {
+      actionOverlaySvg = `
+        <g>
+          <text x="180" y="45" font-size="16" font-weight="900" fill="#B71C1C" text-anchor="middle">⬇️ Cây bị thấp đi do sâu cắn!</text>
+        </g>
+      `;
+    }
+
+    return `
+      <svg viewBox="0 0 360 265" class="plant-scene-svg" aria-label="Mô phỏng cây lớn theo chiều cao thật">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#81D4FA"/>
+            <stop offset="75%" stop-color="#E1F5FE"/>
+            <stop offset="100%" stop-color="#FFF9C4"/>
+          </linearGradient>
+          <linearGradient id="soilGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#8D6E63"/>
+            <stop offset="100%" stop-color="#4E342E"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Bầu trời & Ông mặt trời -->
+        <rect x="0" y="0" width="360" height="230" fill="url(#skyGrad)"/>
+        <circle cx="315" cy="42" r="24" fill="#FFD54F" opacity="0.95"/>
+        <circle cx="315" cy="42" r="31" fill="#FFE082" opacity="0.35"/>
+
+        <!-- Mây trắng trôi -->
+        <g fill="#FFFFFF" opacity="0.88">
+          <ellipse cx="85" cy="38" rx="26" ry="12"/>
+          <ellipse cx="102" cy="34" rx="18" ry="14"/>
+          <ellipse cx="220" cy="52" rx="24" ry="10"/>
+        </g>
+
+        <!-- Thước đo chiều cao cây (0cm -> 180cm) bên trái -->
+        <g class="height-ruler-svg">
+          <rect x="12" y="25" width="36" height="205" rx="6" fill="rgba(255,255,255,0.85)" stroke="#90CAF9" stroke-width="1.5"/>
+          <line x1="48" y1="50" x2="40" y2="50" stroke="#0277BD" stroke-width="2"/>
+          <text x="28" y="54" font-size="9" font-weight="900" fill="#0277BD" text-anchor="middle">180cm</text>
+          <line x1="48" y1="95" x2="42" y2="95" stroke="#0277BD" stroke-width="1.5"/>
+          <text x="28" y="99" font-size="9" font-weight="800" fill="#0277BD" text-anchor="middle">135cm</text>
+          <line x1="48" y1="140" x2="42" y2="140" stroke="#0277BD" stroke-width="1.5"/>
+          <text x="28" y="144" font-size="9" font-weight="800" fill="#0277BD" text-anchor="middle">90cm</text>
+          <line x1="48" y1="185" x2="42" y2="185" stroke="#0277BD" stroke-width="1.5"/>
+          <text x="28" y="189" font-size="9" font-weight="800" fill="#0277BD" text-anchor="middle">45cm</text>
+          <!-- Vạch chỉ chiều cao hiện tại của cây -->
+          <line x1="48" y1="${topY}" x2="180" y2="${topY}" stroke="#FF6F00" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <rect x="52" y="${Math.max(12, topY - 11)}" width="54" height="18" rx="9" fill="#FF6F00"/>
+          <text x="79" y="${Math.max(24, topY + 1)}" font-size="10" font-weight="900" fill="#FFFFFF" text-anchor="middle">${PLANT_STAGES[Math.min(6, Math.max(0, level))].heightCm} cm</text>
+        </g>
+
+        <!-- Đồi cỏ xanh & Nền đất nâu -->
+        <ellipse cx="180" cy="232" rx="195" ry="18" fill="#81C784"/>
+        <rect x="0" y="230" width="360" height="35" fill="url(#soilGrad)"/>
+        <ellipse cx="180" cy="232" rx="68" ry="11" fill="#5D4037"/>
+
+        <!-- Thân cây chính mọc từ đất lên -->
+        <path
+          d="M180 ${groundY + 2} Q178 ${(groundY + topY) / 2} 180 ${topY}"
+          stroke="${stemColor}"
+          stroke-width="${strokeW}"
+          stroke-linecap="round"
+          fill="none"
+        />
+
+        <!-- Tán lá, Hoa, Quả & Sâu bọ -->
+        ${branchesAndLeavesSvg}
+        ${flowersSvg}
+        ${fruitsSvg}
+        ${bugsSvg}
+        ${actionOverlaySvg}
+      </svg>
+    `;
+  }
+
   function renderFarmGameHtml(fs) {
     const plots = fs.plots || [];
-    const stageNames = ["Đất gieo hạt 🌱", "Cây non lớn nhanh 🌿", "Cây trổ hoa/tán lớn 🌳", "Chín mọng! Sẵn sàng thu hoạch 🎉"];
     const selectedPlot = plots[farmSelectedPlotIdx] || plots[0];
+    // Chuẩn hóa stage 0..6
+    const currentLevel = Math.min(6, Math.max(0, selectedPlot.stage || 0));
+    const stageInfo = PLANT_STAGES[currentLevel];
+    const fruitEmoji = (selectedPlot.emojiStages && selectedPlot.emojiStages[3]) || "🍎";
 
     const plotsHtml = plots
       .map((p, idx) => {
-        const currentEmoji = p.emojiStages[p.stage] || "🌱";
-        const isReady = p.stage >= 3;
+        const lv = Math.min(6, Math.max(0, p.stage || 0));
+        const pFruit = (p.emojiStages && p.emojiStages[3]) || "🍎";
+        const iconByLv = ["🌰", "🌱", "🌿", "🪴", "🌸", "🍏", pFruit][lv];
+        const cm = PLANT_STAGES[lv].heightCm;
         return `
           <button
             type="button"
-            class="farm-plot-card ${farmSelectedPlotIdx === idx ? "selected" : ""} ${isReady ? "ready-harvest" : ""}"
+            class="farm-mini-tab ${farmSelectedPlotIdx === idx ? "selected" : ""} ${lv >= 6 ? "ready-harvest" : ""}"
             data-plot-idx="${idx}"
           >
-            <div class="farm-plot-emoji">${currentEmoji}</div>
-            <div class="farm-plot-name">${p.cropName}</div>
-            <div class="farm-plot-progress">
-              ${isReady ? "✨ Bấm thu hoạch!" : `Cấp ${p.stage + 1}/4`}
+            <span class="f-mini-icon">${iconByLv}</span>
+            <div class="f-mini-meta">
+              <div class="f-mini-name">${p.cropName}</div>
+              <div class="f-mini-cm">${lv >= 6 ? "✨ Thu hoạch!" : `Cao ${cm}cm (Cấp ${lv + 1}/7)`}</div>
             </div>
           </button>
         `;
       })
       .join("");
 
-    return `
-      <div class="game-instruction-bar">
-        <span>🌱 <strong>Nông Trại Vui Vẻ:</strong> Chọn 1 ô đất bên dưới và trả lời đúng từ tiếng Anh để <strong>tưới nước 💧 & bón phân 🌟</strong> giúp cây lớn nhanh và thu hoạch quả ngọt!</span>
-      </div>
+    const actionVerbLabel =
+      stageInfo.nextTask === "bug"
+        ? "🐛 Bấm từ đúng để Xịt Thảo Mộc Diệt Sâu & Giúp Cây Cao Lên:"
+        : stageInfo.nextTask === "harvest"
+        ? "🧺 Bấm từ đúng để Thu Hoạch Quả Chín Vào Giỏ:"
+        : "🚿 Bấm từ đúng để Tưới Nước & Bón Phân Cho Cây Lớn Lên:";
 
-      <div class="farm-plots-grid">
+    return `
+      <!-- Thanh chọn 6 loại cây trong vườn -->
+      <div class="farm-crops-bar">
         ${plotsHtml}
       </div>
 
-      <div class="game-question-panel">
-        <div class="game-q-badge">
-          💧 Nhiệm vụ tưới nước cho: <strong>${selectedPlot.cropName}</strong> (${stageNames[selectedPlot.stage]})
+      ${farmStatusBanner}
+
+      <div class="farm-realistic-layout">
+        <!-- Khung mô phỏng cây lớn theo chiều cao thật -->
+        <div class="plant-simulator-card">
+          <div class="plant-sim-header">
+            <span class="plant-crop-badge">🌳 ${selectedPlot.cropName}</span>
+            <span class="plant-height-badge">📏 Chiều cao: ${stageInfo.heightCm} cm</span>
+          </div>
+
+          <div class="plant-svg-stage-wrap">
+            ${buildDynamicPlantSvg(currentLevel, fruitEmoji, farmActionAnim, stageInfo.hasBug)}
+          </div>
+
+          <div class="plant-lifecycle-bar">
+            <span class="lc-step ${currentLevel >= 0 ? "done" : ""}">🌰 Ươm mầm</span>
+            <span class="lc-step ${currentLevel >= 2 ? "done" : ""}">🌿 Cây non</span>
+            <span class="lc-step ${currentLevel >= 4 ? "done" : ""}">🌸 Trổ hoa</span>
+            <span class="lc-step ${currentLevel >= 6 ? "done" : ""}">${fruitEmoji} Ra quả</span>
+          </div>
+
+          ${
+            currentLevel >= 6
+              ? `
+            <button type="button" class="btn-kid btn-warning" id="btnHarvestNow" style="width:100%;margin-top:8px;">
+              🧺 Thu Hoạch ${selectedPlot.cropName} Ngay (+8 ⭐ & +20 🪙)
+            </button>
+          `
+              : ""
+          }
         </div>
 
-        <div class="learning-spotlight-box">
-          <div class="spotlight-meaning">🇻🇳 Nghĩa là: "${farmTargetWord.meaning}"</div>
-          <div class="spotlight-sub">Chọn đúng từ tiếng Anh để tưới nước cho cây lớn lên nhé!</div>
-          <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:46px;padding:8px 18px;font-size:0.98rem;margin-top:8px;">
-            🔊 Nghe gợi ý phát âm (0.85x)
-          </button>
-        </div>
+        <!-- Bảng hành động chăm sóc cây bằng Tiếng Anh -->
+        <div class="plant-care-panel">
+          <div class="care-task-alert ${stageInfo.hasBug ? "bug-alert" : "water-alert"}">
+            ${stageInfo.taskBadge}
+          </div>
 
-        <div class="game-choices-grid">
-          ${farmOptions
-            .map(
-              (opt) => `
-              <button type="button" class="game-answer-btn" data-farm-ans="${opt.word}">
-                <span style="font-size:1.6rem;">${opt.emoji || "🌱"}</span>
-                <span>${opt.word}</span>
-              </button>
-            `
-            )
-            .join("")}
-        </div>
+          <div class="learning-spotlight-box">
+            <div style="font-size:0.82rem;font-weight:900;color:#E65100;text-transform:uppercase;">
+              ${actionVerbLabel}
+            </div>
+            <div class="spotlight-meaning" style="margin:6px 0;">
+              ${farmTargetWord.emoji || "🌱"} "${farmTargetWord.meaning}"
+            </div>
+            <div class="spotlight-sub">
+              (⚠️ Lưu ý: Nếu chọn sai, sâu bọ sẽ cắn làm cây bị thấp đi 1 cấp!)
+            </div>
+            <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:42px;padding:6px 16px;font-size:0.92rem;margin-top:8px;">
+              🔊 Nghe phát âm (0.85x)
+            </button>
+          </div>
 
-        ${farmFeedbackHtml}
+          <div class="game-choices-grid">
+            ${farmOptions
+              .map(
+                (opt) => `
+                <button type="button" class="game-answer-btn" data-farm-ans="${opt.word}">
+                  <span style="font-size:1.45rem;">${stageInfo.hasBug ? "🐛" : "🚿"}</span>
+                  <span>${opt.word}</span>
+                </button>
+              `
+              )
+              .join("")}
+          </div>
+        </div>
       </div>
     `;
   }
 
   // =========================================================================
-  // GAME 2: ⛏️ ĐÀO VÀNG TIẾNG ANH (GOLD MINER ENGLISH)
+  // GAME 2: 🎣 CÂU CÁ CHÂN THẬT (HỒ NƯỚC, THUYỀN GỖ, NGƯỜI CÂU VUNG CẦN)
+  // =========================================================================
+  function setupFishingRound(unit) {
+    const q = pickRandomQuestion(unit, fishTargetWord ? fishTargetWord.word : "");
+    fishTargetWord = q.target;
+    const fishColors = [
+      { body: "#FF7043", fin: "#D84315", name: "Cá Chép Vàng" },
+      { body: "#29B6F6", fin: "#0277BD", name: "Cá Hồi Xanh" },
+      { body: "#AB47BC", fin: "#6A1B9A", name: "Cá Thần Tiên" },
+      { body: "#66BB6A", fin: "#2E7D32", name: "Cá Ngọc Bích" }
+    ];
+    fishList = q.options.map((opt, idx) => ({
+      ...opt,
+      ...fishColors[idx % fishColors.length],
+      lane: idx
+    }));
+    fishingState = "idle";
+    fishingTargetLane = null;
+  }
+
+  function renderFishingGameHtml(fs) {
+    if (!fishTargetWord) setupFishingRound(currentUnitRef);
+
+    // Tính tọa độ đích của lưỡi câu & dây cước khi người câu vung cần
+    const laneCoords = [
+      { x: 115, y: 205 },
+      { x: 285, y: 210 },
+      { x: 135, y: 278 },
+      { x: 305, y: 282 }
+    ];
+    const activeCoord =
+      fishingTargetLane !== null && laneCoords[fishingTargetLane]
+        ? laneCoords[fishingTargetLane]
+        : { x: 225, y: 125 };
+
+    const rodTipX = fishingState === "idle" ? 215 : 235;
+    const rodTipY = fishingState === "idle" ? 36 : 52;
+
+    const fishesHtml = fishList
+      .map((f, idx) => {
+        const isHooked = fishingState === "caught" && fishingTargetLane === idx;
+        const isMissed = fishingState === "missed" && fishingTargetLane === idx;
+        return `
+          <button
+            type="button"
+            class="real-fish-actor lane-pos-${idx} ${isHooked ? "fish-flying-to-boat" : ""} ${isMissed ? "fish-scared-away" : ""}"
+            data-fish-idx="${idx}"
+            title="Bấm để vung cần câu chú cá '${f.word}'"
+          >
+            <div class="fish-word-tag">
+              <span class="f-word-main">${f.word}</span>
+              <span class="f-word-ipa">${f.ipa || ""}</span>
+            </div>
+            <svg viewBox="0 0 92 52" class="real-fish-svg">
+              <!-- Đuôi cá vẫy -->
+              <polygon points="72,26 90,10 86,26 90,42" fill="${f.fin}" class="fish-tail-fin"/>
+              <!-- Vây lưng & vây bụng -->
+              <path d="M35 12 Q48 2 56 14 Z" fill="${f.fin}"/>
+              <path d="M40 38 Q50 48 56 38 Z" fill="${f.fin}"/>
+              <!-- Thân cá -->
+              <ellipse cx="42" cy="26" rx="32" ry="16" fill="${f.body}" stroke="#FFFFFF" stroke-width="1.5"/>
+              <!-- Vảy cá lấp lánh -->
+              <path d="M36 20 Q42 26 36 32 M48 19 Q54 26 48 33" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none"/>
+              <!-- Mắt cá & Miệng cá -->
+              <circle cx="20" cy="22" r="4.5" fill="#FFFFFF"/>
+              <circle cx="19" cy="22" r="2.2" fill="#000000"/>
+              <path d="M10 28 Q15 31 18 28" stroke="#3E2723" stroke-width="2" fill="none"/>
+            </svg>
+          </button>
+        `;
+      })
+      .join("");
+
+    return `
+      <!-- Bảng nhiệm vụ mồi câu rõ nét ở trên -->
+      <div class="fishing-mission-bar">
+        <div class="f-mission-left">
+          <span class="f-mission-tag">🎣 MỒI CÂU TIẾNG ANH:</span>
+          <span class="f-mission-meaning">${fishTargetWord.emoji || "🐟"} "${fishTargetWord.meaning}"</span>
+        </div>
+        <div class="f-mission-actions">
+          <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:40px;padding:6px 14px;font-size:0.9rem;">
+            🔊 Nghe từ cần câu (0.85x)
+          </button>
+        </div>
+      </div>
+
+      <!-- Khung cảnh Hồ Nước, Thuyền Bè, Người Câu Vung Cần & Đàn Cá Bơi Thật -->
+      <div class="real-lake-fishing-stage">
+        <svg viewBox="0 0 420 330" class="lake-background-svg">
+          <defs>
+            <linearGradient id="lakeSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#81D4FA"/>
+              <stop offset="100%" stop-color="#E1F5FE"/>
+            </linearGradient>
+            <linearGradient id="lakeWater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#29B6F6"/>
+              <stop offset="55%" stop-color="#0288D1"/>
+              <stop offset="100%" stop-color="#01579B"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Bầu trời, Núi xa & Mặt trời -->
+          <rect x="0" y="0" width="420" height="122" fill="url(#lakeSky)"/>
+          <circle cx="372" cy="34" r="20" fill="#FFD54F"/>
+          <polygon points="0,122 65,68 140,122" fill="#81C784" opacity="0.7"/>
+          <polygon points="95,122 185,58 275,122" fill="#66BB6A" opacity="0.75"/>
+          <polygon points="240,122 330,72 420,122" fill="#81C784" opacity="0.7"/>
+
+          <!-- Mặt hồ nước xanh -->
+          <rect x="0" y="120" width="420" height="210" fill="url(#lakeWater)"/>
+          <!-- Sóng nước lăn tăn -->
+          <path d="M0 124 Q35 118 70 124 T140 124 T210 124 T280 124 T350 124 T420 124" stroke="#B3E5FC" stroke-width="3" fill="none"/>
+
+          <!-- Đáy hồ cát vàng & Rong biển đung đưa -->
+          <path d="M0 312 Q110 302 220 312 T420 310 L420 330 L0 330 Z" fill="#FFE082" opacity="0.65"/>
+          <path d="M35 325 Q28 295 38 275 Q45 295 40 325" fill="#2E7D32" opacity="0.65"/>
+          <path d="M380 325 Q370 290 385 268 Q395 292 388 325" fill="#388E3C" opacity="0.65"/>
+
+          <!-- THUYỀN GỖ & NGƯỜI CÂU CÁ GIA KHIÊM TRÊN MẶT HỒ -->
+          <g class="wooden-boat-group">
+            <!-- Giỏ đựng cá trên thuyền -->
+            <rect x="38" y="92" width="34" height="22" rx="5" fill="#FFB74D" stroke="#E65100" stroke-width="2"/>
+            <text x="55" y="107" font-size="11" font-weight="900" fill="#3E2723" text-anchor="middle">🧺 ${fs.fishCaught || 0}</text>
+
+            <!-- Người câu cá Gia Khiêm đội mũ cói ngồi trên thuyền -->
+            <g class="angler-body-group">
+              <!-- Thân áo phao cam -->
+              <path d="M88 84 L112 84 L116 112 L84 112 Z" fill="#FF7043" stroke="#BF360C" stroke-width="1.5"/>
+              <!-- Đầu & Khuôn mặt tươi cười -->
+              <circle cx="100" cy="68" r="13" fill="#FFE0B2" stroke="#E65100" stroke-width="1.2"/>
+              <circle cx="105" cy="66" r="2" fill="#263238"/>
+              <path d="M101 73 Q105 77 109 73" stroke="#D84315" stroke-width="1.8" fill="none"/>
+              <!-- Mũ cói rộng vành -->
+              <ellipse cx="100" cy="57" rx="20" ry="5" fill="#FFD54F" stroke="#F57F17" stroke-width="1.5"/>
+              <path d="M88 57 Q100 43 112 57 Z" fill="#FFE082" stroke="#F57F17" stroke-width="1.5"/>
+
+              <!-- Cánh tay & Cần câu vung ra khi câu -->
+              <g class="angler-rod-arm ${fishingState !== "idle" ? "rod-cast-forward" : ""}">
+                <!-- Cánh tay cầm cần -->
+                <line x1="106" y1="90" x2="128" y2="82" stroke="#FFE0B2" stroke-width="6" stroke-linecap="round"/>
+                <!-- Cây cần câu cong vút -->
+                <path
+                  d="${fishingState === "caught" ? `M122 85 Q185 28 ${rodTipX} ${rodTipY + 14}` : `M122 85 Q175 45 ${rodTipX} ${rodTipY}`}"
+                  stroke="#5D4037"
+                  stroke-width="3.5"
+                  stroke-linecap="round"
+                  fill="none"
+                />
+              </g>
+            </g>
+
+            <!-- Thân thuyền gỗ nâu -->
+            <path d="M22 108 L158 108 L142 130 L38 130 Z" fill="#8D6E63" stroke="#4E342E" stroke-width="2.5"/>
+            <line x1="28" y1="115" x2="152" y2="115" stroke="#5D4037" stroke-width="2"/>
+            <text x="92" y="126" font-size="9.5" font-weight="900" fill="#FFF8E1" text-anchor="middle">THUYỀN GIA KHIÊM</text>
+          </g>
+
+          <!-- DÂY CƯỚC, PHAO CÂU ĐỎ TRẮNG & LƯỠI CÂU PHÓNG XUỐNG NƯỚC -->
+          <line
+            x1="${rodTipX}"
+            y1="${rodTipY}"
+            x2="${activeCoord.x}"
+            y2="${activeCoord.y}"
+            stroke="#FFFFFF"
+            stroke-width="1.8"
+            stroke-dasharray="${fishingState === "idle" ? "3,2" : "none"}"
+          />
+          <!-- Phao câu đỏ trắng -->
+          <g transform="translate(${activeCoord.x}, ${Math.min(125, activeCoord.y)})">
+            <circle cx="0" cy="0" r="6" fill="#E53935" stroke="#FFFFFF" stroke-width="2"/>
+          </g>
+          <!-- Lưỡi câu & Bọt nước bắn khi vung cần -->
+          ${
+            fishingState !== "idle"
+              ? `
+            <g transform="translate(${activeCoord.x}, ${activeCoord.y})">
+              <circle cx="0" cy="0" r="14" fill="none" stroke="#B3E5FC" stroke-width="2" stroke-dasharray="4,3"/>
+              <text x="0" y="5" font-size="16" text-anchor="middle">${fishingState === "caught" ? "💦🎉" : "🪝"}</text>
+            </g>
+          `
+              : ""
+          }
+        </svg>
+
+        <!-- Đàn cá bơi tương tác dưới lòng hồ (Bấm vào cá để người câu vung cần!) -->
+        <div class="lake-fishes-overlay">
+          ${fishesHtml}
+        </div>
+      </div>
+
+      <div class="fishing-footer-tip">
+        👆 <strong>Cách chơi:</strong> Bấm trực tiếp vào chú cá dưới hồ mang từ tiếng Anh có nghĩa <strong>"${fishTargetWord.meaning}"</strong> để Gia Khiêm vung cần câu cá lên thuyền!
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // GAME 3: ⛏️ ĐÀO VÀNG HẦM MỎ CHÂN THẬT
   // =========================================================================
   function setupGoldRound(unit) {
-    const q = pickRandomQuestion(unit);
+    const q = pickRandomQuestion(unit, goldTargetWord ? goldTargetWord.word : "");
     goldTargetWord = q.target;
     const weights = [
-      { type: "💎 Kim cương", rewardGold: 25, rewardStars: 4, icon: "💎" },
-      { type: "🪙 Vàng khối lớn", rewardGold: 20, rewardStars: 3, icon: "🪙" },
-      { type: "💰 Túi vàng", rewardGold: 15, rewardStars: 3, icon: "💰" },
-      { type: "👑 Vương miện vàng", rewardGold: 30, rewardStars: 4, icon: "👑" }
+      { type: "💎 Kim cương xanh", rewardGold: 25, rewardStars: 4, icon: "💎" },
+      { type: "🪙 Khối vàng ròng", rewardGold: 20, rewardStars: 3, icon: "🪙" },
+      { type: "💰 Túi vàng cổ", rewardGold: 15, rewardStars: 3, icon: "💰" },
+      { type: "👑 Vương miện báu vật", rewardGold: 30, rewardStars: 4, icon: "👑" }
     ];
     goldNuggets = q.options.map((opt, idx) => ({
       ...opt,
       ...weights[idx % weights.length]
     }));
     goldReelingIdx = null;
+    goldWrongIdx = null;
   }
 
   function renderGoldGameHtml(fs) {
     if (!goldTargetWord) setupGoldRound(currentUnitRef);
 
     return `
-      <div class="game-instruction-bar">
-        <span>⛏️ <strong>Đào Vàng Tiếng Anh:</strong> Nghe hoặc nhìn nghĩa tiếng Việt trên mặt đất, sau đó <strong>bấm vào cục vàng/kim cương</strong> có từ tiếng Anh đúng để thả móc câu kéo vàng lên!</span>
-      </div>
-
       <div class="gold-mine-scene">
-        <!-- Mặt đất & Thợ mỏ Gia Khiêm -->
         <div class="gold-miner-top">
           <div class="miner-avatar-cabin">
-            <span style="font-size:2.2rem;">👷‍♂️🚜</span>
+            <span style="font-size:2.1rem;">👷‍♂️⛏️</span>
             <div>
-              <div style="font-weight:900;color:#E65100;font-size:0.95rem;">Thợ Mỏ Gia Khiêm</div>
-              <div style="font-size:0.85rem;font-weight:800;color:#546E7A;">Kho vàng: 🪙 ${fs.goldCoins || 0}</div>
+              <div style="font-weight:900;color:#E65100;font-size:0.92rem;">Thợ Mỏ Gia Khiêm</div>
+              <div style="font-size:0.82rem;font-weight:800;color:#546E7A;">Kho vàng: 🪙 ${fs.goldCoins || 0}</div>
             </div>
           </div>
 
           <div class="gold-target-sign">
-            <div style="font-size:0.82rem;font-weight:900;color:#B71C1C;text-transform:uppercase;">🎯 Hãy đào cục vàng có nghĩa:</div>
-            <div style="font-size:1.35rem;font-weight:900;color:#1B5E20;">"${goldTargetWord.meaning}"</div>
-            <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:38px;padding:4px 12px;font-size:0.88rem;margin-top:4px;">
+            <div style="font-size:0.78rem;font-weight:900;color:#B71C1C;text-transform:uppercase;">🎯 Bấm đào khối báu vật có nghĩa:</div>
+            <div style="font-size:1.3rem;font-weight:900;color:#1B5E20;">${goldTargetWord.emoji || "🪙"} "${goldTargetWord.meaning}"</div>
+            <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:36px;padding:4px 12px;font-size:0.85rem;margin-top:4px;">
               🔊 Nghe từ cần đào
             </button>
           </div>
         </div>
 
-        <!-- Dây cáp móc câu đung đưa -->
         <div class="miner-claw-Pivot">
           <div class="miner-claw-rope ${goldReelingIdx !== null ? "shooting" : ""}">
             <span class="claw-hook-icon">🪝</span>
           </div>
         </div>
 
-        <!-- Lòng đất chứa 4 cục vàng / kim cương -->
         <div class="underground-nuggets-grid">
           ${goldNuggets
             .map(
               (nug, idx) => `
               <button
                 type="button"
-                class="gold-nugget-btn ${goldReelingIdx === idx ? "reeling-up" : ""}"
+                class="gold-nugget-btn ${goldReelingIdx === idx ? "reeling-up" : ""} ${goldWrongIdx === idx ? "wrong-shake" : ""}"
                 data-gold-idx="${idx}"
               >
                 <div class="nugget-treasure-icon">${nug.icon}</div>
@@ -6104,10 +6393,10 @@ window.GKGames = (function () {
   }
 
   // =========================================================================
-  // GAME 3: 🎯 PHÁO SAO BẮN BÓNG TỪ VỰNG (STAR TARGET SHOOTER)
+  // GAME 4: 🎯 PHÁO SAO BẮN BÓNG TỪ VỰNG
   // =========================================================================
   function setupShooterRound(unit) {
-    const q = pickRandomQuestion(unit);
+    const q = pickRandomQuestion(unit, shooterTargetWord ? shooterTargetWord.word : "");
     shooterTargetWord = q.target;
     const targetIcons = ["🎈", "🛸", "🪐", "🎯"];
     shooterTargets = q.options.map((opt, idx) => ({
@@ -6121,22 +6410,17 @@ window.GKGames = (function () {
     if (!shooterTargetWord) setupShooterRound(currentUnitRef);
 
     return `
-      <div class="game-instruction-bar">
-        <span>🎯 <strong>Pháo Sao Bắn Từ Vựng:</strong> Ngắm bắn quả bóng/đĩa bay mang từ tiếng Anh khớp với nghĩa bên dưới!</span>
-      </div>
-
       <div class="shooter-sky-arena">
         <div class="shooter-mission-hud">
           <div>
-            <span style="font-size:0.85rem;font-weight:900;color:#FFECB3;">🚀 MỤC TIÊU CẦN BẮN TRÚNG:</span>
-            <div style="font-size:1.4rem;font-weight:900;color:#FFFFFF;">${shooterTargetWord.emoji || "🌟"} "${shooterTargetWord.meaning}"</div>
+            <span style="font-size:0.82rem;font-weight:900;color:#FFECB3;">🚀 NGẮM BẮN MỤC TIÊU CÓ NGHĨA:</span>
+            <div style="font-size:1.35rem;font-weight:900;color:#FFFFFF;">${shooterTargetWord.emoji || "🌟"} "${shooterTargetWord.meaning}"</div>
           </div>
-          <button type="button" class="btn-kid btn-warning" id="btnGameSpeakTarget" style="min-height:42px;padding:6px 14px;font-size:0.92rem;">
-            🔊 Nghe âm thanh
+          <button type="button" class="btn-kid btn-warning" id="btnGameSpeakTarget" style="min-height:40px;padding:6px 14px;font-size:0.9rem;">
+            🔊 Nghe từ
           </button>
         </div>
 
-        <!-- Các mục tiêu bay trên bầu trời -->
         <div class="shooter-targets-row">
           ${shooterTargets
             .map(
@@ -6156,16 +6440,15 @@ window.GKGames = (function () {
             .join("")}
         </div>
 
-        <!-- Khẩu pháo ánh sao ở dưới -->
         <div class="star-cannon-dock">
-          <div class="cannon-turret">🚀⚡ Pháo Ánh Sao Gia Khiêm (Điểm bắn: ${shooterScore})</div>
+          <div class="cannon-turret">🚀⚡ Pháo Ánh Sao Gia Khiêm • Điểm xạ thủ: ${shooterScore}</div>
         </div>
       </div>
     `;
   }
 
   // =========================================================================
-  // GAME 4: ♟️ CỜ VUA HIỆP SĨ TIẾNG ANH (CHESS KNIGHT QUEST)
+  // GAME 5: ♟️ CỜ VUA HIỆP SĨ TIẾNG ANH
   // =========================================================================
   const CHESS_TERMS = [
     { piece: "♔ King", vi: "Quân Vua (King)" },
@@ -6184,10 +6467,9 @@ window.GKGames = (function () {
   }
 
   function prepareChessQuestion(unit) {
-    const q = pickRandomQuestion(unit);
+    const q = pickRandomQuestion(unit, chessTargetWord ? chessTargetWord.word : "");
     chessTargetWord = q.target;
     chessOptions = q.options;
-    // Chọn ô ngọc tiếp theo chưa ăn làm đích di chuyển
     const nextGem = chessGemPositions.find((pos) => !chessCollectedGems.includes(pos));
     chessPendingMove = nextGem !== undefined ? nextGem : 15;
   }
@@ -6207,11 +6489,11 @@ window.GKGames = (function () {
 
       let cellContent = "";
       if (isKnightHere) {
-        cellContent = `<span class="chess-piece-hero" title="Hiệp sĩ Mã Gia Khiêm (White Knight)">♘</span>`;
+        cellContent = `<span class="chess-piece-hero">♘</span>`;
       } else if (isBossSquare) {
-        cellContent = `<span class="chess-piece-boss" title="Vua Rồng Đen (Black King)">♚🐉</span>`;
+        cellContent = `<span class="chess-piece-boss">♚🐉</span>`;
       } else if (hasGem) {
-        cellContent = `<span class="chess-gem-icon" title="Ngọc Từ Vựng">💎</span>`;
+        cellContent = `<span class="chess-gem-icon">💎</span>`;
       }
 
       cellsHtml.push(`
@@ -6225,36 +6507,29 @@ window.GKGames = (function () {
     const chessTip = CHESS_TERMS[chessCollectedGems.length % CHESS_TERMS.length];
 
     return `
-      <div class="game-instruction-bar">
-        <span>♟️ <strong>Cờ Vua Hiệp Sĩ Tiếng Anh:</strong> Giải câu đố từ vựng để điều khiển <strong>Quân Mã Hiệp Sĩ (♘ Knight)</strong> nhảy tới ô phát sáng ăn Ngọc Từ Vựng 💎 và chiếu tướng Vua Rồng ♚!</span>
-      </div>
-
       <div class="chess-quest-layout">
-        <!-- Bàn cờ vua 4x4 -->
         <div class="chess-board-wrapper">
           <div class="chess-status-top">
             <span>♘ Hiệp sĩ Gia Khiêm</span>
             <span>💎 Ngọc: ${chessCollectedGems.length}/4</span>
-            <span>🏆 Thắng: ${fs.chessWins || 0} ván</span>
+            <span>🏆 Thắng: ${fs.chessWins || 0}</span>
           </div>
           <div class="chess-board-4x4">
             ${cellsHtml.join("")}
           </div>
           <div class="chess-english-tip">
-            ♟️ Từ vựng Cờ Vua: <button type="button" class="tappable-word" data-word="${chessTip.piece.split(" ")[1]}">${chessTip.piece}</button> = <strong>${chessTip.vi}</strong>
+            ♟️ Quân cờ: <button type="button" class="tappable-word" data-word="${chessTip.piece.split(" ")[1]}">${chessTip.piece}</button> = <strong>${chessTip.vi}</strong>
           </div>
         </div>
 
-        <!-- Bảng câu hỏi điều khiển nước đi -->
         <div class="chess-challenge-panel">
           <div class="game-q-badge">
-            ⚡ Nước đi tiếp theo: Nhảy Mã ♘ tới ô <strong>${"ABCD"[chessPendingMove % 4]}${4 - Math.floor(chessPendingMove / 4)}</strong>!
+            ⚡ Điều khiển Mã ♘ nhảy tới ô <strong>${"ABCD"[chessPendingMove % 4]}${4 - Math.floor(chessPendingMove / 4)}</strong>:
           </div>
 
           <div class="learning-spotlight-box">
             <div class="spotlight-meaning">${chessTargetWord.emoji || "♟️"} "${chessTargetWord.meaning}"</div>
-            <div class="spotlight-sub">Chọn đúng từ tiếng Anh để đi nước cờ Chiến Thắng!</div>
-            <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:42px;padding:6px 16px;font-size:0.95rem;margin-top:6px;">
+            <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:40px;padding:6px 14px;font-size:0.9rem;margin-top:6px;">
               🔊 Nghe phát âm
             </button>
           </div>
@@ -6276,7 +6551,7 @@ window.GKGames = (function () {
   }
 
   // =========================================================================
-  // GAME 5: 🍬 KẸO NGỌT CANDY MATCH (CANDY ENGLISH CRUSH)
+  // GAME 6: 🍬 KẸO NGỌT CANDY MATCH
   // =========================================================================
   function setupCandyGame(unit) {
     const pool = getVocabPool(unit).slice(0, 6);
@@ -6300,7 +6575,7 @@ window.GKGames = (function () {
         word: item.word,
         displayTop: item.emoji || cIcon,
         displayMain: item.meaning,
-        displaySub: "Nghĩa tiếng Việt",
+        displaySub: "Tiếng Việt",
         cardType: "vi"
       });
     });
@@ -6316,16 +6591,16 @@ window.GKGames = (function () {
 
     return `
       <div class="game-instruction-bar">
-        <span>🍬 <strong>Kẹo Ngọt Candy Crush:</strong> Chạm vào <strong>1 viên kẹo Tiếng Anh</strong> và <strong>1 viên kẹo Nghĩa Tiếng Việt</strong> tương ứng để làm nổ kẹo và tích sao!</span>
+        <span>🍬 <strong>Kẹo Ngọt Candy:</strong> Chạm chọn 1 viên kẹo Tiếng Anh và 1 viên kẹo Tiếng Việt khớp nghĩa để nổ kẹo!</span>
       </div>
 
       ${
         allCleared
           ? `
-        <div style="text-align:center;padding:24px;">
-          <div style="font-size:4rem;">🍬🎉🍭</div>
-          <h3 style="font-size:1.5rem;font-weight:900;color:#2E7D32;margin:8px 0;">
-            Gia Khiêm Đã Phá Đảo Bàn Kẹo Ngọt Candy! (+10 ⭐)
+        <div style="text-align:center;padding:20px;">
+          <div style="font-size:3.8rem;">🍬🎉🍭</div>
+          <h3 style="font-size:1.4rem;font-weight:900;color:#2E7D32;margin:8px 0;">
+            Gia Khiêm Đã Phá Đảo Bàn Kẹo Candy! (+10 ⭐)
           </h3>
           <button type="button" class="btn-kid btn-primary" id="btnResetCandyGame">
             🔄 Chơi bàn Kẹo Candy mới
@@ -6359,164 +6634,196 @@ window.GKGames = (function () {
   }
 
   // =========================================================================
-  // GAME 6: 🎣 CÂU CÁ ĐẠI DƯƠNG (HAPPY FISHING)
-  // =========================================================================
-  function setupFishingRound(unit) {
-    const q = pickRandomQuestion(unit);
-    fishTargetWord = q.target;
-    const seaCreatures = ["🐠", "🐡", "🐬", "🐳"];
-    fishList = q.options.map((opt, idx) => ({
-      ...opt,
-      fishIcon: seaCreatures[idx % seaCreatures.length]
-    }));
-    fishHookedIdx = null;
-  }
-
-  function renderFishingGameHtml(fs) {
-    if (!fishTargetWord) setupFishingRound(currentUnitRef);
-
-    return `
-      <div class="game-instruction-bar">
-        <span>🎣 <strong>Câu Cá Đại Dương:</strong> Nghe phát âm và xem nghĩa tiếng Việt trên thuyền, sau đó <strong>chạm vào chú cá</strong> mang đúng từ tiếng Anh để kéo cá lên thuyền!</span>
-      </div>
-
-      <div class="fishing-ocean-scene">
-        <!-- Thuyền câu của Gia Khiêm trên mặt biển -->
-        <div class="fishing-boat-top">
-          <div class="boat-character">
-            <span style="font-size:2.4rem;">🚣‍♂️🎣</span>
-            <div>
-              <div style="font-weight:900;color:#01579B;">Thuyền Trưởng Gia Khiêm</div>
-              <div style="font-size:0.85rem;font-weight:800;color:#0277BD;">Đã câu được: 🐠 ${fs.fishCaught || 0} con cá</div>
-            </div>
-          </div>
-
-          <div class="fishing-bait-board">
-            <div style="font-size:0.82rem;font-weight:900;color:#E65100;">🪱 MỒI CÂU CẦN CÂU CHÚ CÁ:</div>
-            <div style="font-size:1.35rem;font-weight:900;color:#1565C0;">${fishTargetWord.emoji || "🐠"} "${fishTargetWord.meaning}"</div>
-            <button type="button" class="btn-kid btn-secondary" id="btnGameSpeakTarget" style="min-height:38px;padding:4px 12px;font-size:0.88rem;margin-top:4px;">
-              🔊 Nghe tên cá tiếng Anh
-            </button>
-          </div>
-        </div>
-
-        <!-- Dưới lòng đại dương với 4 chú cá đang bơi -->
-        <div class="ocean-water-zone">
-          ${fishList
-            .map(
-              (f, idx) => `
-              <button
-                type="button"
-                class="swimming-fish-btn lane-${idx} ${fishHookedIdx === idx ? "hooked" : ""}"
-                data-fish-idx="${idx}"
-              >
-                <span class="fish-creature-emoji">${f.fishIcon}</span>
-                <div class="fish-word-bubble">
-                  <div class="fish-en-word">${f.word}</div>
-                  <div class="fish-ipa-word">${f.ipa || ""}</div>
-                </div>
-              </button>
-            `
-            )
-            .join("")}
-        </div>
-      </div>
-    `;
-  }
-
-  // =========================================================================
-  // XỬ LÝ TƯƠNG TÁC CỦA CẢ 6 TRÒ CHƠI & KHEN NGỢI GIA KHIÊM
+  // XỬ LÝ TƯƠNG TÁC TỨC THÌ CỦA 6 TRÒ CHƠI
   // =========================================================================
   function bindActiveGameEvents(container, onStatsChange) {
-    // Nút nghe phát âm từ mục tiêu chung cho các game
+    // Nút nghe từ mục tiêu (Phát âm 0ms ngay lập tức)
     document.getElementById("btnGameSpeakTarget")?.addEventListener("click", () => {
       const targetObj =
         activeGameId === "farm"
           ? farmTargetWord
+          : activeGameId === "fishing"
+          ? fishTargetWord
           : activeGameId === "gold"
           ? goldTargetWord
           : activeGameId === "shooter"
           ? shooterTargetWord
-          : activeGameId === "chess"
-          ? chessTargetWord
-          : fishTargetWord;
+          : chessTargetWord;
       if (targetObj) {
         window.GKSpeech.speak(targetObj.word);
       }
     });
 
-    // 1. Sự kiện Nông Trại Vui Vẻ
+    // -----------------------------------------------------------------------
+    // 1. SỰ KIỆN GAME TRỒNG CÂY CHÂN THẬT (TƯỚI CÂY, DIỆT SÂU, CHỌN SAI THẤP ĐI)
+    // -----------------------------------------------------------------------
     container.querySelectorAll("[data-plot-idx]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const idx = Number(btn.getAttribute("data-plot-idx"));
-        farmSelectedPlotIdx = idx;
-        const fs = window.GKStorage.getFarmState();
-        const plot = fs.plots[idx];
-
-        // Nếu cây đã chín (stage >= 3) -> Thu hoạch ngay!
-        if (plot && plot.stage >= 3) {
-          window.GKStorage.updateFarmState((s) => {
-            s.plots[idx].stage = 0;
-            s.harvestedFruits = (s.harvestedFruits || 0) + 1;
-            s.goldCoins = (s.goldCoins || 0) + 15;
-          });
-          window.GKStorage.addStars(5);
-          window.GKSpeech.playSfx("fanfare");
-          window.GKSpeech.triggerPraise({
-            stars: 5,
-            icon: "🍎",
-            viText: `🎉 Chúc mừng Gia Khiêm thu hoạch thành công ${plot.cropName}! Nhận +5 ⭐ và +15 🪙!`
-          });
-          if (onStatsChange) onStatsChange();
-        } else {
-          window.GKSpeech.playSfx("pop");
-        }
+        farmSelectedPlotIdx = Number(btn.getAttribute("data-plot-idx"));
+        farmActionAnim = "";
+        farmStatusBanner = "";
+        window.GKSpeech.playSfx("pop");
         renderGamesHub(container, currentUnitRef, onStatsChange);
       });
+    });
+
+    document.getElementById("btnHarvestNow")?.addEventListener("click", () => {
+      const fs = window.GKStorage.getFarmState();
+      const plot = fs.plots[farmSelectedPlotIdx] || fs.plots[0];
+      window.GKStorage.updateFarmState((s) => {
+        s.plots[farmSelectedPlotIdx].stage = 0;
+        s.harvestedFruits = (s.harvestedFruits || 0) + 1;
+        s.goldCoins = (s.goldCoins || 0) + 20;
+      });
+      window.GKStorage.addStars(8);
+      window.GKSpeech.playSfx("fanfare");
+      window.GKSpeech.triggerPraise({
+        stars: 8,
+        icon: "🧺",
+        viText: `🍎 Thu hoạch rực rỡ! Gia Khiêm đã trồng ${plot.cropName} từ hạt mầm lên 180cm và hái đầy giỏ quả (+8 ⭐, +20 🪙)!`
+      });
+      farmActionAnim = "";
+      farmStatusBanner = `<div class="feedback-banner success" style="margin-bottom:12px;">🧺 Đã thu hoạch <strong>${plot.cropName}</strong> vào giỏ! Hãy gieo hạt mới và chăm sóc tiếp nhé!</div>`;
+      if (onStatsChange) onStatsChange();
+      renderGamesHub(container, currentUnitRef, onStatsChange);
     });
 
     container.querySelectorAll("[data-farm-ans]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const ans = btn.getAttribute("data-farm-ans");
+        const fs = window.GKStorage.getFarmState();
+        const plot = fs.plots[farmSelectedPlotIdx] || fs.plots[0];
+        const prevLv = Math.min(6, Math.max(0, plot.stage || 0));
+        const stageInfo = PLANT_STAGES[prevLv];
+
         if (ans.toLowerCase() === farmTargetWord.word.toLowerCase()) {
-          window.GKSpeech.playSfx("correct");
+          // TRẢ LỜI ĐÚNG -> THỰC HIỆN HÀNH ĐỘNG TƯỚI CÂY / DIỆT SÂU & CÂY CAO LÊN!
           window.GKSpeech.speak(farmTargetWord.word);
+          window.GKSpeech.playSfx(stageInfo.hasBug ? "correct" : "splash");
           window.GKStorage.addStars(3);
 
-          let harvestedNow = false;
+          let nextLv = prevLv;
+          let harvestedAuto = false;
+
           window.GKStorage.updateFarmState((s) => {
             const p = s.plots[farmSelectedPlotIdx] || s.plots[0];
-            if (p.stage < 3) {
-              p.stage += 1;
+            if ((p.stage || 0) < 6) {
+              p.stage = (p.stage || 0) + 1;
+              nextLv = p.stage;
             } else {
               p.stage = 0;
+              nextLv = 0;
               s.harvestedFruits = (s.harvestedFruits || 0) + 1;
-              harvestedNow = true;
+              s.goldCoins = (s.goldCoins || 0) + 20;
+              harvestedAuto = true;
             }
           });
 
+          farmActionAnim = stageInfo.hasBug ? "killbug" : "watering";
+          const newCm = PLANT_STAGES[nextLv].heightCm;
+          const actMsg = harvestedAuto
+            ? `🧺 Cây đã đạt 180cm và tự động thu hoạch quả chín vào giỏ (+20 🪙)!`
+            : stageInfo.hasBug
+            ? `🐦 Đã diệt sạch sâu bọ! Cây ${plot.cropName} phát triển vọt lên ${newCm} cm!`
+            : `🚿 Tưới nước mát lành! Cây ${plot.cropName} cao lớn lên tới ${newCm} cm!`;
+
+          farmStatusBanner = `<div class="feedback-banner success" style="margin-bottom:12px;">🌟 <strong>Chính xác ("${farmTargetWord.word}")!</strong> ${actMsg}</div>`;
+
           window.GKSpeech.triggerPraise({
             stars: 3,
-            icon: "🌱",
-            viText: harvestedNow
-              ? `🍎 Cây đã chín và thu hoạch quả ngọt rồi! Gia Khiêm giỏi quá!`
-              : `💧 Tưới nước thành công! Cây của Gia Khiêm đã lớn thêm 1 cấp nhờ từ "${farmTargetWord.word}"!`
+            icon: stageInfo.hasBug ? "🐦" : "🚿",
+            viText: actMsg
           });
 
-          const q = pickRandomQuestion(currentUnitRef);
+          const q = pickRandomQuestion(currentUnitRef, farmTargetWord.word);
           farmTargetWord = q.target;
           farmOptions = q.options;
           if (onStatsChange) onStatsChange();
           renderGamesHub(container, currentUnitRef, onStatsChange);
         } else {
-          btn.style.background = "#FFCDD2";
+          // TRẢ LỜI SAI -> SÂU CẮN LÀM CÂY BỊ THẤP ĐI 1 CẤP!
           window.GKSpeech.playSfx("wrong");
+          window.GKSpeech.resetCombo();
           window.GKSpeech.speak(farmTargetWord.word);
+
+          let shrunkLv = prevLv;
+          window.GKStorage.updateFarmState((s) => {
+            const p = s.plots[farmSelectedPlotIdx] || s.plots[0];
+            if ((p.stage || 0) > 0) {
+              p.stage = (p.stage || 0) - 1;
+            }
+            shrunkLv = p.stage || 0;
+          });
+
+          const oldCm = PLANT_STAGES[prevLv].heightCm;
+          const newCm = PLANT_STAGES[shrunkLv].heightCm;
+          farmActionAnim = "shrink";
+          farmStatusBanner = `
+            <div class="feedback-banner retry" style="margin-bottom:12px;">
+              🐛 <strong>Ối! Sâu bọ cắn làm cây thấp đi rồi (${oldCm}cm ⬇️ còn ${newCm}cm)!</strong>
+              Đáp án đúng là <strong>"${farmTargetWord.word}"</strong> (${farmTargetWord.meaning}). Gia Khiêm trả lời đúng câu tiếp theo để tưới nước cứu cây cao lên lại nhé!
+            </div>
+          `;
+          if (onStatsChange) onStatsChange();
+          renderGamesHub(container, currentUnitRef, onStatsChange);
         }
       });
     });
 
-    // 2. Sự kiện Đào Vàng Tiếng Anh
+    // -----------------------------------------------------------------------
+    // 2. SỰ KIỆN GAME CÂU CÁ HỒ NƯỚC THẬT (VUNG CẦN, QUĂNG DÂY, KÉO CÁ LÊN THUYỀN)
+    // -----------------------------------------------------------------------
+    container.querySelectorAll("[data-fish-idx]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (fishingState !== "idle") return;
+        const idx = Number(btn.getAttribute("data-fish-idx"));
+        const fish = fishList[idx];
+        if (!fish) return;
+
+        fishingTargetLane = idx;
+
+        if (fish.word.toLowerCase() === fishTargetWord.word.toLowerCase()) {
+          // Vung cần câu trúng cá!
+          fishingState = "caught";
+          window.GKSpeech.playSfx("splash");
+          window.GKSpeech.speak(fish.word);
+          renderGamesHub(container, currentUnitRef, onStatsChange);
+
+          setTimeout(() => {
+            window.GKSpeech.playSfx("correct");
+            window.GKStorage.updateFarmState((s) => {
+              s.fishCaught = (s.fishCaught || 0) + 1;
+              s.goldCoins = (s.goldCoins || 0) + 10;
+            });
+            window.GKStorage.addStars(3);
+            window.GKSpeech.triggerPraise({
+              stars: 3,
+              icon: "🎣",
+              viText: `🐠 Vung cần chuẩn xác! Gia Khiêm câu được ${fish.name} mang từ "${fish.word}" (${fish.meaning}) lên thuyền!`
+            });
+            if (onStatsChange) onStatsChange();
+            setupFishingRound(currentUnitRef);
+            renderGamesHub(container, currentUnitRef, onStatsChange);
+          }, 680);
+        } else {
+          // Quăng câu nhầm cá -> Cá vẫy đuôi chạy mất
+          fishingState = "missed";
+          window.GKSpeech.playSfx("wrong");
+          window.GKSpeech.speak(fishTargetWord.word);
+          renderGamesHub(container, currentUnitRef, onStatsChange);
+
+          setTimeout(() => {
+            fishingState = "idle";
+            fishingTargetLane = null;
+            renderGamesHub(container, currentUnitRef, onStatsChange);
+          }, 550);
+        }
+      });
+    });
+
+    // -----------------------------------------------------------------------
+    // 3. SỰ KIỆN GAME ĐÀO VÀNG
+    // -----------------------------------------------------------------------
     container.querySelectorAll("[data-gold-idx]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const idx = Number(btn.getAttribute("data-gold-idx"));
@@ -6537,21 +6844,24 @@ window.GKGames = (function () {
             window.GKSpeech.triggerPraise({
               stars: nug.rewardStars || 3,
               icon: nug.icon || "🪙",
-              viText: `⛏️ Đào trúng ${nug.type} "${nug.word}" (${nug.meaning})! Gia Khiêm nhận +${nug.rewardGold} 🪙!`
+              viText: `⛏️ Kéo lên thành công ${nug.type} "${nug.word}" (+${nug.rewardGold} 🪙)!`
             });
             if (onStatsChange) onStatsChange();
             setupGoldRound(currentUnitRef);
             renderGamesHub(container, currentUnitRef, onStatsChange);
-          }, 600);
+          }, 520);
         } else {
-          btn.style.background = "#FFCDD2";
+          goldWrongIdx = idx;
           window.GKSpeech.playSfx("wrong");
           window.GKSpeech.speak(goldTargetWord.word);
+          renderGamesHub(container, currentUnitRef, onStatsChange);
         }
       });
     });
 
-    // 3. Sự kiện Pháo Sao Bắn Bóng Từ Vựng
+    // -----------------------------------------------------------------------
+    // 4. SỰ KIỆN GAME PHÁO SAO BẮN TỪ
+    // -----------------------------------------------------------------------
     container.querySelectorAll("[data-shoot-idx]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const idx = Number(btn.getAttribute("data-shoot-idx"));
@@ -6567,7 +6877,7 @@ window.GKGames = (function () {
           window.GKSpeech.triggerPraise({
             stars: 3,
             icon: "🎯",
-            viText: `🚀 Bắn trúng hồng tâm từ "${target.word}" (${target.meaning})! Xạ thủ Gia Khiêm đỉnh quá!`
+            viText: `🚀 Bắn trúng mục tiêu "${target.word}" (${target.meaning})!`
           });
           if (onStatsChange) onStatsChange();
           renderGamesHub(container, currentUnitRef, onStatsChange);
@@ -6575,7 +6885,7 @@ window.GKGames = (function () {
           setTimeout(() => {
             setupShooterRound(currentUnitRef);
             renderGamesHub(container, currentUnitRef, onStatsChange);
-          }, 550);
+          }, 480);
         } else {
           btn.style.background = "#FFCDD2";
           window.GKSpeech.playSfx("wrong");
@@ -6584,7 +6894,9 @@ window.GKGames = (function () {
       });
     });
 
-    // 4. Sự kiện Cờ Vua Hiệp Sĩ Tiếng Anh
+    // -----------------------------------------------------------------------
+    // 5. SỰ KIỆN GAME CỜ VUA HIỆP SĨ
+    // -----------------------------------------------------------------------
     container.querySelectorAll("[data-chess-ans]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const ans = btn.getAttribute("data-chess-ans");
@@ -6597,7 +6909,6 @@ window.GKGames = (function () {
           }
 
           if (chessCollectedGems.length >= chessGemPositions.length) {
-            // Chiếu tướng thắng ván cờ!
             window.GKStorage.updateFarmState((s) => {
               s.chessWins = (s.chessWins || 0) + 1;
               s.goldCoins = (s.goldCoins || 0) + 30;
@@ -6607,7 +6918,7 @@ window.GKGames = (function () {
             window.GKSpeech.triggerPraise({
               stars: 6,
               icon: "♔",
-              viText: `♟️ CHIẾU TƯỚNG (CHECKMATE)! Kiện tướng Cờ Vua Gia Khiêm đã chiến thắng Vua Rồng (+6 ⭐)!`
+              viText: `♟️ CHIẾU TƯỚNG! Kiện tướng Cờ Vua Gia Khiêm đã chiến thắng Vua Rồng (+6 ⭐)!`
             });
             setupChessGame(currentUnitRef);
           } else {
@@ -6615,7 +6926,7 @@ window.GKGames = (function () {
             window.GKSpeech.triggerPraise({
               stars: 3,
               icon: "♘",
-              viText: `♘ Nước cờ Mã tuyệt đẹp! Gia Khiêm ăn được Ngọc Từ Vựng "${chessTargetWord.word}"!`
+              viText: `♘ Mã Hiệp Sĩ nhảy ăn Ngọc Từ Vựng "${chessTargetWord.word}"!`
             });
             prepareChessQuestion(currentUnitRef);
           }
@@ -6630,7 +6941,9 @@ window.GKGames = (function () {
       });
     });
 
-    // 5. Sự kiện Kẹo Ngọt Candy Match
+    // -----------------------------------------------------------------------
+    // 6. SỰ KIỆN GAME KẸO NGỌT CANDY
+    // -----------------------------------------------------------------------
     document.getElementById("btnResetCandyGame")?.addEventListener("click", () => {
       setupCandyGame(currentUnitRef);
       renderGamesHub(container, currentUnitRef, onStatsChange);
@@ -6664,7 +6977,7 @@ window.GKGames = (function () {
             window.GKSpeech.triggerPraise({
               stars: 3,
               icon: "🍬",
-              viText: `🍬 Nổ kẹo Candy ngọt ngào! "${c1.word}" = "${c1.cardType === "vi" ? c1.displayMain : c2.displayMain}"!`
+              viText: `🍬 Nổ kẹo Candy ngọt ngào! "${c1.word}"!`
             });
             if (onStatsChange) onStatsChange();
             renderGamesHub(container, currentUnitRef, onStatsChange);
@@ -6672,43 +6985,8 @@ window.GKGames = (function () {
             setTimeout(() => {
               candyFlipped = [];
               renderGamesHub(container, currentUnitRef, onStatsChange);
-            }, 650);
+            }, 520);
           }
-        }
-      });
-    });
-
-    // 6. Sự kiện Câu Cá Đại Dương
-    container.querySelectorAll("[data-fish-idx]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const idx = Number(btn.getAttribute("data-fish-idx"));
-        const fish = fishList[idx];
-        if (!fish || fishHookedIdx !== null) return;
-
-        if (fish.word.toLowerCase() === fishTargetWord.word.toLowerCase()) {
-          fishHookedIdx = idx;
-          window.GKSpeech.playSfx("correct");
-          window.GKSpeech.speak(fish.word);
-          renderGamesHub(container, currentUnitRef, onStatsChange);
-
-          setTimeout(() => {
-            window.GKStorage.updateFarmState((s) => {
-              s.fishCaught = (s.fishCaught || 0) + 1;
-            });
-            window.GKStorage.addStars(3);
-            window.GKSpeech.triggerPraise({
-              stars: 3,
-              icon: "🎣",
-              viText: `🐠 Câu trúng chú cá "${fish.word}" (${fish.meaning})! Cần thủ Gia Khiêm siêu quá!`
-            });
-            if (onStatsChange) onStatsChange();
-            setupFishingRound(currentUnitRef);
-            renderGamesHub(container, currentUnitRef, onStatsChange);
-          }, 550);
-        } else {
-          btn.style.background = "#FFCDD2";
-          window.GKSpeech.playSfx("wrong");
-          window.GKSpeech.speak(fishTargetWord.word);
         }
       });
     });
@@ -6722,17 +7000,7 @@ window.GKGames = (function () {
 })();
 
 
-/* === js\app.js === */
-/**
- * js/app.js
- * Bộ điều khiển trung tâm của ứng dụng học tiếng Anh tương tác 30 phút/ngày cho bé Gia Khiêm (Lớp 2)
- * Nâng cấp toàn diện:
- * 1. Lưu điểm dừng bài học (Auto-Resume Checkpoint) & Tự động chuyển sang bài mới tiếp theo (không phải học lại từ đầu)
- * 2. Lồng ghép 6 Trò chơi học tiếng Anh (Nông trại trồng cây, Đào vàng, Bắn từ, Cờ vua, Candy, Câu cá)
- * 3. Tối ưu hiển thị rõ nét, nổi bật thông tin học tập cho màn hình iPhone 11 Pro Max (414x896)
- * 4. Hệ thống khen ngợi nhiệt tình (Praise Toast + âm thanh) mỗi khi Gia Khiêm làm bài tốt
- * 5. Giọng đọc kể chuyện Anh Quốc ấm áp theo phong cách BBC "The Storytellers - The Perfect Thing" (en-GB)
- */
+
 
 window.GKApp = (function () {
   let currentUnit = null;
@@ -6857,9 +7125,7 @@ window.GKApp = (function () {
     renderActiveStage();
   }
 
-  /**
-   * Hiển thị thanh thông tin "Học tiếp bài đang lưu" nổi bật ngay đầu trang
-   */
+  
   function renderResumeProgressBanner() {
     const bannerEl = document.getElementById("resumeProgressBanner");
     if (!bannerEl || !currentUnit) return;
@@ -7371,6 +7637,68 @@ window.GKApp = (function () {
     });
   }
 
+  // Cập nhật cực nhanh (<2ms) riêng các ô chữ và thẻ chữ mà không tải lại ảnh minh họa
+  function updateStage1LettersDOM(container) {
+    const slotsEl = document.getElementById("s1SlotsContainer");
+    const tilesEl = document.getElementById("s1TilesContainer");
+    if (!slotsEl || !tilesEl) {
+      renderStage1(container);
+      return;
+    }
+
+    slotsEl.innerHTML = s1CurrentSlots
+      .map((slot, idx) => {
+        const cls = [
+          "letter-slot",
+          slot.isFixed ? "fixed" : slot.userChar ? "filled" : "",
+          slot.status
+        ]
+          .filter(Boolean)
+          .join(" ");
+        const displayChar = slot.userChar || (slot.isFixed ? slot.targetChar : "");
+        return `
+          <button
+            type="button"
+            class="${cls}"
+            data-slot-idx="${idx}"
+            ${slot.isFixed || s1CheckedSuccess ? "disabled" : ""}
+          >
+            ${displayChar}
+          </button>
+        `;
+      })
+      .join("");
+
+    tilesEl.innerHTML = s1LetterTiles
+      .map((tile, idx) => {
+        return `
+          <button
+            type="button"
+            class="letter-tile-btn"
+            data-tile-idx="${idx}"
+            ${tile.used || s1CheckedSuccess ? "disabled" : ""}
+          >
+            ${tile.char}
+          </button>
+        `;
+      })
+      .join("");
+
+    tilesEl.querySelectorAll(".letter-tile-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const tIdx = Number(btn.getAttribute("data-tile-idx"));
+        handleStage1TileClick(tIdx, container);
+      });
+    });
+
+    slotsEl.querySelectorAll(".letter-slot").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sIdx = Number(btn.getAttribute("data-slot-idx"));
+        handleStage1SlotClick(sIdx, container);
+      });
+    });
+  }
+
   function handleStage1TileClick(tileIdx, container) {
     if (s1CheckedSuccess) return;
     const tile = s1LetterTiles[tileIdx];
@@ -7385,11 +7713,12 @@ window.GKApp = (function () {
     tile.used = true;
 
     window.GKSpeech.playSfx("pop");
-    renderStage1(container);
 
     const allFilled = s1CurrentSlots.every((s) => s.isFixed || Boolean(s.userChar));
     if (allFilled) {
       checkStage1Answer(container);
+    } else {
+      updateStage1LettersDOM(container);
     }
   }
 
@@ -7406,7 +7735,7 @@ window.GKApp = (function () {
     slot.status = "";
 
     window.GKSpeech.playSfx("pop");
-    renderStage1(container);
+    updateStage1LettersDOM(container);
   }
 
   function handleStage1Hint(container) {
@@ -7974,8 +8303,10 @@ window.GKApp = (function () {
         const line = dialogue[idx];
         if (!line) return;
 
+        // Cập nhật trạng thái nút Mic trực tiếp ngay tức thì (0ms) mà không vẽ lại toàn bộ DOM
         s2ListeningLineIdx = idx;
-        renderStage2(container);
+        btn.classList.add("listening");
+        btn.innerHTML = "🎙️ Đang nghe Gia Khiêm... (Đọc to nhé)";
 
         window.GKSpeech.listenAndEvaluate(line.text, {
           onResult: (evalObj) => {
@@ -8002,7 +8333,8 @@ window.GKApp = (function () {
           },
           onEndWithoutResult: () => {
             s2ListeningLineIdx = null;
-            renderStage2(container);
+            btn.classList.remove("listening");
+            btn.innerHTML = "🎤 Bấm Mic đọc thoại";
           }
         });
       });
